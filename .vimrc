@@ -6,6 +6,7 @@ set list                        " show invisible characters
 set listchars=tab:>·,trail:·    " but only show tabs and trailing whitespace
 set shortmess=atI               " shorten messages and don
 
+let g:Powerline_symbols = 'fancy'
 
 "insert a hashrocket when <Control+L> is hit in insert mode
 imap <c-l> <space>=><space>
@@ -69,7 +70,8 @@ nnoremap <leader>rct :execute 'map <leader>t :FufFile'<CR>
 "settings specific to gvim
 if has("gui_running")
   " maximizes the gvim window
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
+  "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
   set lines=999 columns=999
   " No menus and no toolbar
   set guioptions-=m

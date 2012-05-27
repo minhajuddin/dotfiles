@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#script which does a global search and replace in the git repository
+#it takes two arguments
+#e.g. git replace OLD NEW
+
+if [ $# = 2 ]
+then
+  sedexpr="s/$1/$2/g" 
+else
+  sedexpr="$1"
+fi
+
+for file in $(git ls-files)
+do
+  echo "replacing in '$file'"
+  sed -i -e "$sedexpr" "$file"
+done

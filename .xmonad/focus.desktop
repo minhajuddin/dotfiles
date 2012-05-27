@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=XMonad Focus
+Comment=Lightweight tiling window manager
+Exec=/home/minhajuddin/.xmonad/focus.start
+Icon=xmonad.png
+Type=XSession

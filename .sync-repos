@@ -1,0 +1,11 @@
+---
+- :path: ~/repos/core/omar/search
+  :remotes:
+  - origin
+- :path: ~/repos/core/omar/designer
+  :remotes:
+  - origin
+- :path: ~/repos/logbin
+  :remotes:
+  - origin
+  - local

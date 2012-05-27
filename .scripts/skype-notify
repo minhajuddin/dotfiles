@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#/home/minhajuddin/.scripts/skype-notify "%type" "%sname" "%fname" "%fpath" "%smessage" "%fsize" "%sskype"
+
+message_type=$1
+skype_name="$2 ($7)"
+message="$5"
+
+
+if [ "$message_type" != "ChatOutgoing" ]
+then
+  notify-send --urgency='normal' --icon='/home/minhajuddin/.data/icons/skype.png' "$skype_name" "$message"
+fi
+echo "$@" >> /tmp/skype.notifications.log

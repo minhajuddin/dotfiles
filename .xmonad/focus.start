@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# load resources
+xrdb -merge .Xresources
+
+#xsetroot -solid '#222'&
+# map caps lock as extra escape
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'&
+# start clipboard manager
+parcellite&
+# start dropbox
+dropbox start &
+
+#start the keyring daemon
+eval $(gnome-keyring-daemon -s)
+export GNOME_KEYRING_CONTROL
+export SSH_AUTH_SOCK
+###
+
+#for themes and stuff
+gnome-settings-daemon&
+
+
+# Fire up apps
+gnome-screensaver&
+#unclutter -noevents &
+
+#$HOME/l/wallpapers/big-buck-bunny.jpg  &
+
+#run any local start script
+local_start=$HOME/.xmonad/$(hostname).start
+if [ -x $local_start ] ; then
+  $local_start &
+fi
+
+#start laptop's network manager
+if [ -x /usr/bin/nm-applet ] ; then
+  nm-applet --sm-disable &
+fi
+
+#start laptop's power manager
+if [ -x /usr/bin/gnome-power-manager ] ; then
+  (sleep 3 && gnome-power-manager)&
+fi
+
+#start xmonad
+#exec /home/minhajuddin/.cabal/bin/xmonad
+exec /home/minhajuddin/.cabal/bin/xmonad

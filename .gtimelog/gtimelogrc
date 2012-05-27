@@ -1,0 +1,12 @@
+[gtimelog]
+list-email = minhajuddin.k@gmail.com
+mailer = x-terminal-emulator -e mutt -H %s
+name = Khaja Minhajuddin
+edit_task_list_cmd = 
+spreadsheet = oocalc %s
+virtual_midnight = 02:00
+hours = 8
+editor = gvim
+task_list_url = 
+gtk-completion = True
+

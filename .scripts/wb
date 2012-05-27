@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+#original source http://eggandham.com/2010/11/use-webrick-to-start-a-web-server-serving-static-content/
+require 'webrick'
+require 'optparse'
+
+include WEBrick    # let's import the namespace so
+                   # I don't have to keep typing
+                   # WEBrick:: in this documentation.
+options = {:Port=>8090,  :DocumentRoot=> './'}
+
+optparser = OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename(__FILE__)} [options]"
+    opts.on("-p", "--port port_num", "Specify Port Number") do |port|
+        options[:Port] = port
+    end
+    opts.on("-d", "--docroot path", "Specify Document Root Folder") do |root|
+        options[:DocumentRoot] = root
+    end
+end
+
+def start_webrick(config = {})
+  server = HTTPServer.new(config)
+  ['INT', 'TERM'].each {|signal|
+    trap(signal) {server.shutdown}
+  }
+  #open the browser in the default browser
+  `which gnome-open && gnome-open http://localhost:#{config[:Port]}/`
+  server.start
+end
+
+begin
+  #parse options and start server
+  optparser.parse!(ARGV)
+  start_webrick(options)
+rescue StandardError=>e
+  puts e
+  puts optparser.to_s
+end
+

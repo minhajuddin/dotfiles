@@ -1,0 +1,13 @@
+URxvt*tintColor:green
+#URxvt*shading:40
+URxvt*saveLines:500
+URxvt*foreground:Green
+URxvt*background:Black
+URxvt*font: xft:Consolas:size=12
+#URxvt*font:-*-courier-medium-r-normal-*-*-140-*-*-*-*-iso8859-1
+#URxvt*boldFont:-*-courier-bold-r-normal-*-*-140-*-*-*-*-iso8859-1
+URxvt*color4:RoyalBlue
+URxvt*color12:RoyalBlue
+URxvt*scrollBar:false
+URxvt*scrollBar_right:false
+URxvt*scrollstyle:rxvt

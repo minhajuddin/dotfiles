@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+puts ARGF.reject{|x| x.chomp.strip.empty?}.map {|x| "#{ x.chomp.split(",").last.gsub(/[^0-9]*(?<mins>\d+)-?(mins|min)?/, "\\k<mins>") }, #{x.chomp}" }.join("\n")

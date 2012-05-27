@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# set up an icon tray
+trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+  --expand true --width 14 --transparent true --tint 0x009900 --height 21 &
+
+/usr/bin/gtimelog &

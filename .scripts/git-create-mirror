@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+  echo 'invalid number of args'
+  exit -1
+fi
+
+ssh cc /home/ubuntu/.scripts/git-mirror $1
+git remote add cc-origin cc:r/$1.git

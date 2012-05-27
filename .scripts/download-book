@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'nokogiri'
+require 'httparty'
+
+url = ARGV.first
+
+i = 0
+`mkdir /tmp/book -p`
+pages = []
+
+while true
+  i += 1
+  puts "dowloading '#{url}'"
+  page = HTTParty.get(url)
+  doc = Nokogiri::HTML(page.body)
+  file = "/tmp/book/book-#{i}.html"
+  pages << file
+  File.open(file, 'w') {|f| f.write page.body }
+  next_url = doc.css("a").find{|x| x.text == "next"}
+  break unless next_url
+  url = URI.parse(url).merge(next_url.attr('href')).to_s
+end
+
+puts 'generating pdf'
+`wkhtmltopdf #{pages.join(' ')} /tmp/book/output.pdf`
+puts 'done.'
+
+#wget the first page and parse the next link
+#get all the pages this way
+#send the html through wkhtmltopdf
+#TODO:email to your kindle account

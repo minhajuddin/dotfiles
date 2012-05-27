@@ -1,0 +1,5 @@
+@hourly   $HOME/.cron/hourly.sh
+@daily    $HOME/.cron/daily.sh
+@weekly   $HOME/.cron/weekly.sh
+@monthly  $HOME/.cron/monthly.sh
+@reboot   $HOME/.cron/reboot.sh

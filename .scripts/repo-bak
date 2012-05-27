@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rsync -a --delete /home/minhajuddin/repos /home/minhajuddin/media/bak &> /home/minhajuddin/tmp/repobak.log

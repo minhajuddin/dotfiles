@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# script which opens up matching files in vim
+# Author: Khaja Minhajuddin (minhajuddink+script@gmail.com)
+
+if [ $# = 0 ] ; then
+  echo 'Invalid number of args.'
+  exit 1
+fi
+
+command="vim "
+for file in $(git grep -n "$@" | sed -r 's/:([0-9]+):.*$/:\1/g' | sort -u -t: -k1,1)
+do
+  line="$(echo "$file" | cut -d':' -f2 )"
+  filename="$(echo "$file" | cut -d':' -f1)"
+  command="$command +tabnew  +$line $filename"
+done
+
+command=$(echo "$command" | tr -d '\n')
+$command
+#echo ">>>>>>>>>>>>>>$command<<<<<<<<<<<<" > /tmp/cmd

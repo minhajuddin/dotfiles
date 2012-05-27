@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+  echo 'invalid number of args'
+  exit -1
+fi
+
+repo="/home/ubuntu/repos/bare/$1.git"
+clone_dir="/home/ubuntu/repos/cloned/$1"
+
+#exit if repo not found
+( ! test -d $repo ) && echo "repo: $repo not found" && exit -1
+
+#exit if already cloned
+( test -d $clone_dir ) && echo "repo: $clone_dir already cloned" && exit -1
+
+git clone $repo $clone_dir

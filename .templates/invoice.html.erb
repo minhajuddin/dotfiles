@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Cosmicpipes | Invoice</title>
+    <!-- inline style to facilitate Save Page As from browser -->
+    <style type="text/css">
+      html, body { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; font-family: arial, helvetica, sans-serif; padding: 20px; }
+      div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, code, del, dfn, em, img, dl, dt, dd, ol, ul, li, fieldset, form, input, label, legend, caption, tbody, tfoot, thead, tr { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; }
+      th, td, caption { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; text-align: left; font-weight: normal; vertical-align: middle; }
+      table { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+      a img { border: none; }
+      li { list-style-type: none; }
+      .intro, .app { padding-bottom: 20px; padding-top: 20px; }
+      .intro { border-bottom: 2px solid #ccc; }
+      .header, .intro { overflow: auto; width: 820px; }
+      .header h1, .header h3, .intro h1, .intro h3 { font-size: 24px; font-weight: bold; }
+      .header h1, .intro h1 { float: left; }
+      .header h3, .intro h3 { float: right; text-align: right; }
+      .header p, .intro p { clear: left; }
+      .header #logo, .intro #logo { float: left; margin-right: 20px; }
+      .header h2, .intro h2 { float: left; padding-top: 26px; font-size: 24px; }
+
+      .app, .credits { width: 800px; padding-left: 20px; }
+      .app h2, .credits h2 { font-weight: bold; padding-bottom: 10px; font-size: 24px; float: left; }
+      .app h2.total, .credits h2.total { float: right; padding-right: 15px; }
+      .app h3, .credits h3 { font-weight: bold; clear: both; padding-top: 10px; padding-bottom: 5px; }
+      .credits table { width: 800px; }
+      .app table{width:95%;}
+      .app table td, .credits table td { border-top: 1px solid #eee; padding: 5px; }
+      .app table td:last-child, .credits table td:last-child { padding: 5px 0 5px 5px; }
+      .app table td.hours, .credits table td.hours { text-align: right; }
+      .app table td .math, .credits table td .math { font-size: 12px; padding-left: .2em; padding-right: .2em; }
+      .app table td.total, .credits table td.total { text-align: right; padding-right: 15px; }
+      .app table td.name, .credits table td.name { width: 300px; padding-left: 20px; }
+      .app div.total, .credits div.total { width: 800px; border-top: 1px solid #ddd; overflow: auto; margin-top: 10px; }
+      .app div.total h4, .credits div.total h4 { width: 122px; text-align: right; float: right; padding: 15px; font-weight: bold; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; }
+      .app table td.price{text-align:right;}
+
+      .footer { border-top: 2px solid #ccc; width: 820px; }
+      .footer .note { float: left; padding: 8px; width: 600px; font-size: 90%; font-style: italic; color: #555; }
+      .footer .total h4 { width: 120px; text-align: right; float: right; padding: 15px; border-right: 2px solid #ccc; border-bottom: 2px solid #ccc; border-left: 2px solid #ccc; font-size: 24px; font-weight: bold; }
+
+      .note { font-size: smaller; font-style: italic; }
+
+      td.line_item_name { width: 300px; }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="header">
+
+      <h5 id="logo">
+        <a href="http://cosmicvent.com"><img src="http://s3.amazonaws.com/cvstatic/cosmicvent-logo.gif" style='height:50px;'/></a>
+      </h5>
+
+      <h2 style='text-aign:center;'>Invoice #<%=invoice_id%></h2>
+      <!--<span>Generated on: Fri Jul 01 16:24:47 -0700 2011</span> -->
+
+    </div>
+
+    <div class="intro">
+      <h1><%= client_name%></h1>
+      <h3 class="date"><%= Time.now.strftime "%d %B %Y" %></h3>
+      <p><%= client_address %></p>
+    </div>
+    <div class='app' style='min-height:700px;'>
+      <table>
+        <% line_items.each do |li| %>
+        <tr>
+          <td class="line_item_name"><%=li[0]%></td>
+          <td><%=li[1]%></td>
+          <td class='price'>$ <%=li[2]%></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div class="note">
+      <p>
+        Cosmicvent Software Pvt Ltd, 3rd Floor, GG Enclave; Beside Mirza Steels, Asifnagar road, Mehdipatnam, Hyderabad.
+        Please contact <a href="mailto:support@cosmicvent.com">support@cosmicvent.com</a> immediately if you have any questions or concerns about the contents of this invoice.</p>
+      </div>
+      <div class="total">
+        <h4>$ <%=line_items.inject(0){|x, y| y[2].to_i + x}%></h4>
+      </div>
+    </div>
+
+  </body>
+</html>
+

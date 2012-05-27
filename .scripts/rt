@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'yaml'
+require 'erb'
+
+ConfigFilePath = File.expand_path("~/.remote-tail.yml")
+
+SampleConfig=<<EOS
+---
+defaults: &defaults
+  host: c3
+foonginx:
+  file: /var/log/nginx/*.log
+barapp:
+  host: foo@bar.com
+  file: /var/www/apps/railsfooapp/shared/log/*.log
+EOS
+
+Usage=<<EOS
+Usage:
+  1. cd to into the directory whose name is the same as the name of the config and run
+     rt
+
+  2. rt <name of the app>
+
+  3. rt <host> <file>
+EOS
+
+def tail(opts)
+  cmd = "ssh #{opts['host']} 'tail -f #{opts['file']}'"
+  puts "running: '#{cmd}'"
+  system(cmd)
+end
+
+def config(app)
+  puts "using app:#{app}"
+  config = YAML::load_file ConfigFilePath
+  return config[app] if config[app]
+  puts "app:#{app} not found in #{ConfigFilePath}"
+  puts Usage
+  exit 2
+end
+
+def setup
+  return if File.exist? ConfigFilePath
+  puts "creating a sample config at: #{ConfigFilePath}"
+  File.open(ConfigFilePath, 'w') do |f|
+    f.print SampleConfig
+  end
+end
+
+def init
+  setup
+  case ARGV.length
+  when 0
+    #usage:
+    #cd to the app root directory, usually this would be the name with which you
+    #setup the configuration and run
+    #$ rt
+    tail config(File.basename(Dir.pwd))
+  when 1
+    #usage:
+    #from any directory
+    #$ rt <name of the app>
+    tail config(ARGV.first)
+  when 2
+    #usage:
+    #from any directory
+    #$ rt <host> <file>
+    tail :host => ARGV.first, :file => ARGV.last
+  else
+    puts "Invalid number of arguments"
+    puts Usage
+    exit 1
+  end
+end
+
+init

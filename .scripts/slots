@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+#{{{ Infrastructure code
+def slot(title)
+  now = Time.now
+  hours = now.hour * 1.0 + now.min * 1.0/60
+  if(yield(hours))
+    puts title
+    exit 0
+  end
+end
+
+class Float
+  def between?(first, second)
+    self > first && self < second
+  end
+end
+
+#}}}
+
+#configuration
+slot("sleep time") {|h| h.between?(0,5) }
+slot("namaz & quran") {|h| h.between?(5,6) }
+slot("quran learn/read") {|h| h.between?(6,6.30) }
+slot("quran dev") {|h| h.between?(6.30,7) }
+slot("check email") {|h| h.between?(7,7.25) }
+slot("bid for jobs") {|h| h.between?(7.25,7.75) }
+slot("learning slot") {|h| h.between?(7.75,9) }
+slot("write code") {|h| h.between?(9,10) }
+slot("review tasks") {|h| h.between?(10,10.25) }
+slot("assign tasks") {|h| h.between?(10.25,10.5) }
+slot("review code") {|h| h.between?(10.5,11.5) }
+slot("client communication") {|h| h.between?(11.5,12.5) }
+slot("lunch") {|h| h.between?(12.5,13) }
+slot("nap time") {|h| h.between?(13,13.5) }
+slot("review slot") {|h| h.between?(13.5,14) }
+slot("open slot") {|h| h.between?(13.5,16) }
+slot("checkout sw scene") {|h| h.between?(16,16.5) }
+slot("badminton break") {|h| h.between?(16.5,18.5) }
+slot("session prep") {|h| h.between?(18.5,19.25) }
+slot("session") {|h| h.between?(19.25,20.5) }
+slot("sleep time") {|h| h.between?(20.5,23.99) }

@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+expr = ARGV.join
+puts eval expr

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while read filename
+do
+  new_filename=$( echo "$filename" | sed 's/\(.*\)/\L\1/' | sed -e 's/[^a-z0-9.]\+/_/g' )
+  if [ "$filename" != "$new_filename" ]
+  then
+    mv "$filename" "$new_filename"
+  fi
+done

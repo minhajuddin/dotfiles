@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# set up an icon tray
+#trayer --edge top --align left --SetDockType true --SetPartialStrut true \
+  #--expand true --width 7 --transparent true --tint 0x009900 --height 21 &
+trayer --edge top --align left --width 14 --height 21 --SetDockType true --SetPartialStrut false --expand true --transparent true --tint 0x69D2E7
+
+#/usr/bin/synergys --config /etc/synergy.conf &
+
+/usr/bin/skype &
+/usr/bin/pidgin &
+/usr/bin/firefox &
+/usr/bin/gtimelog &
+(/bin/bash -i -c /usr/local/bin/irssi) &

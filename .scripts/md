@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+# Markdown viewer
+#
+# Opens up your markdown documents in a browser, after converting them into HTML
+# Author: Khaja Minhajuddin
+
+require 'rubygems'
+require 'redcarpet'
+require 'erb'
+require 'pygments'
+
+class CustomHtmlRenderer < Redcarpet::Render::HTML
+  def block_code(code, lang)
+    Pygments.highlight code, :lexer => lang
+  end
+end
+
+#@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+@markdown = Redcarpet::Markdown.new(CustomHtmlRenderer, autolink: true, fenced_code_blocks: true, tables: true, no_intra_emphasis: true, strikethrough: true, superscript: true)
+
+@template = ERB.new(<<EOF
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="markdown.css" rel="stylesheet"></link>
+    <link href="pygments.css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <%= body %>
+  </body>
+</html>
+EOF
+)
+
+def view_markdown(filename)
+
+  if !File.exists?(filename)
+    puts "#{filename} does not exist."
+  end
+
+  basename = File.basename(filename)
+
+  opfilename = "/home/minhajuddin/tmp/mdrendered/#{basename}.html"
+  File.open(opfilename, 'w') do |f|
+    file_content = File.read(filename)
+    title = file_content.lines.first.chomp
+    body = @markdown.render(file_content)
+    f.write @template.result(binding)
+  end
+
+  system("gnome-open #{opfilename}")
+
+end
+
+ARGV.each do |arg|
+  view_markdown(arg)
+end

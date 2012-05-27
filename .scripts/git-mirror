@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+  echo 'invalid number of args'
+  exit -1
+fi
+
+repo="/home/ubuntu/repos/bare/$1.git"
+
+if test -d "$repo"
+then
+  echo 'repository already initialized'
+  exit -1
+else
+  mkdir $repo
+  cd $repo
+  git init --bare
+fi

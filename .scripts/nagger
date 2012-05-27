@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'time'
+
+exit if File.exists?("/tmp/stop-nagging")
+#see what I did here ;)
+
+#run the below command to find your display
+#env | grep DISPLAY
+ENV['DISPLAY'] = ':0.0'
+
+last_line = `tail -2 ~/.gtimelog/timelog.txt`.lines.map{|x| x.chomp}.reject{|x| x.empty?}.reverse.first
+minutes = ((Time.now - Time.parse(last_line[11, 5])) / 60).round
+evil_monkey = File.expand_path File.join(File.dirname(__FILE__), 'evil-monkey.gif')
+
+puts minutes
+if minutes > 30
+  `notify-send -i '#{evil_monkey}' "It's been #{minutes} minutes since your last log";exit 0`
+end
+
+exit 0

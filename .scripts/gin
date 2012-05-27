@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'erb'
+
+if ARGV.empty?
+  puts "pass a filename as arg"
+  exit 1
+end
+
+#read from data file or standard input?
+filename = ARGV.first
+data = File.readlines(filename)
+#render erb
+client_name, client_address = data.first.split(';').map{|x| x.chomp}
+template = ERB.new(File.read("/home/minhajuddin/.templates/invoice.html.erb"))
+line_items = data[1..-1].map {|x| x.split(';').map{|y| y.chomp}}
+#render html or pdf
+invoice_id = filename.split('-').last.split('.').first
+file_prefix = filename.split('-').first
+invoice = template.result(binding)
+op_file = "#{file_prefix}-#{invoice_id}.#{Time.now.strftime "%Y%m%d%H%M%S"}.html"
+temp_file = "/tmp/#{ op_file }"
+File.open(temp_file, 'w') { |f| f.puts( invoice ) }
+`wkhtmltopdf-amd64 #{temp_file} pdfs/#{op_file}.pdf`
+puts 'done'

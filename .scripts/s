@@ -1,0 +1,114 @@
+#!/bin/bash
+
+#  ======================================================= #
+#   __  __ _           _       ____  _             _       #
+#  |  \/  (_)_ __   __| |  _  / ___|| |_ __ _  ___| | __   #
+#  | |\/| | | '_ \ / _` | (_) \___ \| __/ _` |/ __| |/ /   #
+#  | |  | | | | | | (_| |  _   ___) | || (_| | (__|   <    #
+#  |_|  |_|_|_| |_|\__,_| (_) |____/ \__\__,_|\___|_|\_\   #
+#                                                          #
+#  ======================================================= #
+
+# Implements a stack for your command line
+# I use it to save the state of my mind when I am distracted to another task
+# It gives me a breadcrumb kind of view of what I am working on.
+# Author: Khaja Minhajuddin
+
+title=("$@")
+unset title[0]
+title_string=${title[*]}
+space=" "
+
+
+#setup
+data_dir=~/.mind_stack
+data_file=~/.mind_stack/data
+[ -d $data_dir ] || mkdir -p $data_dir #create a directory if not present
+[ -f $data_file ] ||  touch $data_file #create a file if not present
+
+
+s_ts(){
+  echo $(date "+%Y%m%d%H%M%S")
+}
+
+append(){
+  echo "$(s_ts)" "$title_string" > $data_file.tmp && cat $data_file >> $data_file.tmp && mv $data_file.tmp $data_file
+}
+push(){
+  echo "$(s_ts)" "$title_string" >> $data_file
+}
+list(){
+  tac ~/.mind_stack/data
+}
+peek(){
+  echo $( tail -1 $data_file | sed "s/^[0-9]*//g" )
+}
+pop(){
+  peek
+  head -n-1 $data_file > $data_file.tmp && mv $data_file.tmp $data_file
+}
+reset(){
+  mv $data_file $data_file.$(s_ts)
+}
+if [  $# -eq 0 ]
+then
+  list
+  exit
+fi
+
+case $1 in
+  push)
+    push
+    exit
+    ;;
+  pop)
+    pop
+    exit
+    ;;
+  peek)
+    peek
+    exit
+    ;;
+  ls)
+    list
+    exit
+    ;;
+  edit)
+    tac $data_file > $data_file.tmp
+    vi $data_file.tmp
+    tac $data_file.tmp > $data_file
+    exit
+    ;;
+  top)
+    str=$(list | head -2 | sed -e 's/^[0-9]*//g'  | ruby -e 'print ARGF.readlines.map(&:chomp).map(&:strip).join(" : ")')
+    count=$( grep -vE '^[0-9]+ \*' $data_file| wc -l |cut -d' ' -f1 )
+    echo "<fc=#ff4400>($count)</fc> <fc=#ffff00>$str</fc>"
+    exit
+    ;;
+  append)
+    append
+    exit
+    ;;
+  reset)
+    reset
+    exit
+    ;;
+  help)
+    echo 'Mind :: Stack usage:'
+    echo '=========================================================='
+    echo 's [push] some stuff #to add something to the top of stack'
+    echo 's pop #to pop something from the top of the stack'
+    echo 's peek #to peek at something on the top of the stack'
+    echo 's ls #to list the whole stack'
+    echo 's append #to append a task to the end of the stack'
+    echo 's reset #to reset the stack'
+    echo 's edit #to edit the whole list in vi'
+    echo 's help #to print this usage/help'
+    echo '=========================================================='
+    exit
+    ;;
+  *)
+    title_string=$1$space$title_string
+    push
+esac
+

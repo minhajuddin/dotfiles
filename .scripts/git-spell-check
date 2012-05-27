@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'raspell'
+
+@speller = Aspell.new("en_US")
+@speller.suggestion_mode = Aspell::NORMAL
+
+
+def spell_check(filename)
+  puts "#{filename}\n#{'=' * filename.length}\n"
+  i=0
+  File.open(filename,"r") do |f|
+    while line=f.gets
+      i=i+1
+      parts= line.split(/[^a-zA-Z]/).reject{|x| x.empty?}
+      parts.each do |word|
+        if !@speller.check(word)
+          print " #{i}:  #{word} > "
+          puts @speller.suggest(word).first
+        end
+      end
+    end
+  end
+
+end
+
+
+files = `git ls-files`.lines.map(&:chomp)
+
+files.each do |file|
+  spell_check(file)
+end

@@ -1,0 +1,19 @@
+---
+:display: ':0.0'
+:reminders:
+- :summary: Fajar
+  :time: '05:55'
+- :summary: Time for lunch
+  :time: '12:25'
+- :summary: Time for lunch!
+  :time: '12:30'
+- :summary: Time for lunch(last)!!
+  :time: '12:45'
+- :summary: Zohar
+  :time: '13:25'
+- :summary: Call it a day
+  :time: "20:25"
+- :summary: Call it a day!
+  :time: "20:30"
+- :summary: !!! CALL IT A DAY !!!
+  :time: "21:30"

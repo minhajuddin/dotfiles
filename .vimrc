@@ -126,7 +126,9 @@ set modeline
 set wildchar=9 " tab as completion character
 
 set virtualedit=block
-set clipboard=unnamedplus " Yanks go on clipboard instead.
+if version >= 730
+  set clipboard=unnamedplus " Yanks go on clipboard instead.
+endif
 set showmatch " Show matching braces.
 set fillchars= " unset pipe as the vertical seperator
 

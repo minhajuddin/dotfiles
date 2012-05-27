@@ -157,5 +157,5 @@ fi
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Added by autojump install.sh
-source /usr/share/autojump/autojump.sh
+[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 source ~/.bashlocal.sh

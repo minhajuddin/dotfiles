@@ -151,8 +151,6 @@ if [[ ! -z "$PS1" ]] ; then
 
   source ~/.bashrc_extensions
 
-  export EC2_PRIVATE_KEY=$HOME/.ssh/pk-QUFQMON2IPVELQY6YYNIBJTAAXRO23ZO.pem
-  export EC2_CERT=$HOME/.ssh/cert-QUFQMON2IPVELQY6YYNIBJTAAXRO23ZO.pem
   export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 fi
 #source rvm
@@ -160,6 +158,4 @@ fi
 
 # Added by autojump install.sh
 source /usr/share/autojump/autojump.sh
-
-
 source ~/.bashlocal.sh

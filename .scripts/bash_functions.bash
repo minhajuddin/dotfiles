@@ -142,17 +142,37 @@ cc $file -o "$file.out"
 }
 
 
-function ghalt(){
-if [ "$1" = 'force' ]
-then
-  /usr/lib/indicator-session/gtk-logout-helper --shutdown
-fi
+function exit_if_not_in_sync(){
+  repos=("dotfiles" "linktub"  "timberexpress" )
+  ret=0
+  for repo in ${repos[@]}
+  do
+    cd "/home/minhajuddin/repos/$repo"
+    if [ $(git log master -1 --format='%h') = $(git log origin/master -1 --format='%h') ]
+    then 
+      echo "$repo in sync"
+    else 
+      echo "$repo not in sync"
+      ret=1
+    fi
+  done
+}
 
-if [ $( t -s :eod | wc -l ) -gt 2 ]
-then
-  echo "You have EOD tasks which have not been finished, please finish them!"
-  t -s :eod
-else
-  /usr/lib/indicator-session/gtk-logout-helper --shutdown
-fi
+function ghalt(){
+  if [ "$1" = 'force' ]
+  then
+    /usr/lib/indicator-session/gtk-logout-helper --shutdown
+  fi
+
+  if [ $( t -s :eod | wc -l ) -gt 2 ]
+  then
+    echo "You have EOD tasks which have not been finished, please finish them!"
+    t -s :eod
+  else
+    exit_if_not_in_sync
+    if [ $ret = 0 ]
+    then
+      /usr/lib/indicator-session/gtk-logout-helper --shutdown
+    fi
+  fi
 }

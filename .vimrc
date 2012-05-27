@@ -60,7 +60,7 @@ nnoremap <C-d> :tabclose<CR>
 " appearance options
 " settings
 set noautoread
-set wildignore+=*.gif,*.fla,*.png,*.swf,*.jpg,tmp/*,public/assets/*
+set wildignore+=*.gif,*.fla,*.png,*.swf,*.jpg,tmp/*,public/assets/*,*.ogv,*.ico
 
 map <leader>rle :execute '%s///g'<cr>
 "match ErrorMsg '\s\+$'

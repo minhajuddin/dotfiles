@@ -111,6 +111,7 @@ alias fs='foreman start'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
 alias rake='bundle exec rake'
 alias rdm='rake db:migrate'
+alias rdr='rake db:rollback'
 alias rds='rake db:seed'
 alias m='mutt'
 

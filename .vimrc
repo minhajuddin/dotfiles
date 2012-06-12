@@ -35,6 +35,10 @@ endif
 :vmap <leader>h :!/home/minhajuddin/.rvm/bin/r_html2haml -e<cr>
 :vmap <leader>s :!/home/minhajuddin/.scripts/msum<cr>
 
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+nnoremap <silent> <C-S> :if expand("%") == ""<CR>browse confirm w<CR>else<CR>confirm w<CR>endif<CR>
+imap <c-s> <Esc><c-s>
 
 "nnoremap <C-e> :call MaximizeToggle ()<CR>
 
@@ -337,7 +341,7 @@ function TrimWhiteSpace()
   " tell VIM to always put a status line in, even if there is only one window
   set laststatus=2
   " Make command line two lines high
-  set ch=2
+  set cmdheight=2
   " Show the current mode
   set showmode
 
@@ -457,4 +461,5 @@ function TrimWhiteSpace()
 "au FocusLost * :set number
 "au FocusGained * :set relativenumber
 "
-"
+
+let g:slime_target = "tmux"

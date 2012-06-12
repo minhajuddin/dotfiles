@@ -62,5 +62,6 @@
   log-ts=log --date=short --format='%ad, %s, %b'
   log-tsc=log --date=short --format='%h,%ad, %s, %b'
   timesheet=log --date=short --format='%ad, %s, %b' --all
+  apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
 [core]
   excludesfile = ~/.gitignore

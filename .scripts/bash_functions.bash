@@ -105,7 +105,7 @@ case $1 in
     ;;
   e) vi $gtimelog
     ;;
-  *) echo "$(date "+%Y-%m-%d %H:%M"): $@" >> $gtimelog
+  *) echo "$(date "+%Y-%m-%d %H:%M"): ${@/jj/**}" >> $gtimelog
     ;;
 esac
 }

@@ -130,3 +130,5 @@ alias c='google-chrome'
 alias tasks='vi ~/Dropbox/tasks.txt'
 alias prs='vi ~/Dropbox/projects.md'
 alias rmd='recordmydesktop --width 1920 --height 1080 --full-shots --fps 30 --channels 1 --device hw:1,0 --delay 10'
+
+alias wb='python -m SimpleHTTPServer 8090'

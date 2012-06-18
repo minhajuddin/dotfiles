@@ -161,7 +161,7 @@ function exit_if_not_in_sync(){
 function ghalt(){
   if [ "$1" = 'force' ]
   then
-    /usr/lib/indicator-session/gtk-logout-helper --shutdown
+    sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown
   fi
 
   if [ $( t -s :eod | wc -l ) -gt 2 ]
@@ -172,7 +172,7 @@ function ghalt(){
     exit_if_not_in_sync
     if [ $ret = 0 ]
     then
-      /usr/lib/indicator-session/gtk-logout-helper --shutdown
+      sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown
     fi
   fi
 }

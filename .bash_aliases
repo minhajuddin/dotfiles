@@ -34,15 +34,16 @@ function hd(){
   defaultBranch="master"
   remote=${1:-$defaultRemote}
   branch=${2:-$defaultBranch}
+  app="$(git remote -v | grep "^$remote.*fetch)" | sed -r 's/^.*git@heroku\.com:([A-Za-z0-9_-]+)\.git.*$/\1/g')"
 
-  echo "pushing $remote $branch"
+  echo "pushing remote: $remote branch: $branch app: $app"
 
   git push "$remote" "$branch:master"
 
   if [ $? = 0 ]
   then
     echo "updating version flag"
-    heroku config:add APP_VERSION="$(git log "$( git ls-remote heroku | grep 'refs/heads/master' | cut -f1 )" -1 --date=short --format="%ad-%h"|sed 's/-/./g')"
+    heroku config:add APP_VERSION="$(git log "$( git ls-remote heroku | grep 'refs/heads/master' | cut -f1 )" -1 --date=short --format="%ad-%h"|sed 's/-/./g')" --app "$app"
   else
     exit $?
   fi
@@ -113,6 +114,7 @@ alias rake='bundle exec rake'
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
 alias rds='rake db:seed'
+alias rup='rake db:setup'
 alias m='mutt'
 
 #aliases for the task list script
@@ -132,3 +134,4 @@ alias prs='vi ~/Dropbox/projects.md'
 alias rmd='recordmydesktop --width 1920 --height 1080 --full-shots --fps 30 --channels 1 --device hw:1,0 --delay 10'
 
 alias wb='python -m SimpleHTTPServer 8090'
+alias irb='pry'

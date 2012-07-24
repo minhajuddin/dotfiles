@@ -159,3 +159,5 @@ fi
 # Added by autojump install.sh
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 source ~/.bashlocal.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

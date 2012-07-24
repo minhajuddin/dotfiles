@@ -58,8 +58,6 @@ imap <c-s> <Esc><c-s>
   "endif
 "endfunction
 
-nnoremap <C-m> :tabedit %<CR>
-nnoremap <C-d> :tabclose<CR>
 
 " appearance options
 " settings
@@ -277,7 +275,7 @@ function TrimWhiteSpace()
   map <C-tab> :bnext<cr>
   imap <C-S-tab> <ESC>:bprevious<cr>i
   imap <C-tab> <ESC>:bnext<cr>i
-  nmap <C-n> :tabnew<cr>
+  "nmap <C-n> :tabnew<cr>
 
 
   " Haskell stuff
@@ -461,3 +459,5 @@ function TrimWhiteSpace()
 "
 
 let g:slime_target = "tmux"
+nnoremap <C-o> :tabedit %<CR>
+nnoremap <C-d> :tabclose<CR>

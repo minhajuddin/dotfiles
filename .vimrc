@@ -461,3 +461,4 @@ function TrimWhiteSpace()
 let g:slime_target = "tmux"
 nnoremap <C-o> :tabedit %<CR>
 nnoremap <C-d> :tabclose<CR>
+"set shell=/bin/bash\ -i

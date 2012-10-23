@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'securerandom'
+require 'yaml'
+
+class Kv
+  KvHomeDir = File.join(ENV['HOME'], '.kv')
+  KvIndex = File.join(KvHomeDir, 'index')
+
+  def initialize
+    self.setup
+  end
+
+  def setup
+    FileUtils.mkdir(KvHomeDir) unless Dir.exists?(KvHomeDir)
+    FileUtils.touch(KvIndex)
+  end
+
+  def get(key)
+    File.read(File.join(KvHomeDir, index[key]))
+  end
+
+  def store(key, value)
+    id = SecureRandom.uuid
+    #store key in index file
+    index[key] = id
+    save_index
+    #store value in a different file
+    File.open(File.join(KvHomeDir, id), 'w') do |f|
+      f.write value
+    end
+  end
+
+  def index
+    @index ||= YAML.load_file(KvIndex) || {}
+  end
+
+  def save_index
+    File.open(KvIndex, 'w') do |f|
+      f.write YAML.dump(index)
+    end
+  end
+end
+
+kv = Kv.new
+
+if ARGV.count > 1
+  kv.store(ARGV[0], ARGV[1..-1].join(' '))
+elsif ARGV.count == 1 && !STDIN.tty?
+  kv.store(ARGV[0], STDIN.read)
+elsif ARGV.count == 1
+  puts kv.get(ARGV[0])
+end

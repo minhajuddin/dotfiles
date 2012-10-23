@@ -45,7 +45,7 @@
   m = merge
   d = diff --color-words -w
   dt = difftool
-  dh = d HEAD
+  dh = !git d HEAD
   amend = commit --amend -C HEAD
   ll = !git la -20
   lll = !git la -50

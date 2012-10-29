@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=$PATH:$HOME/bin:$HOME/.scripts:$HOME/.cabal/bin:/$HOME/.scripts/gsd:$HOME/apps/android/android-sdk-linux_86/tools:/usr/local/sphinx/bin/:$HOME/node_modules/.bin:$HOME/Dropbox/private/scripts
+export PATH=$PATH:$HOME/bin:$HOME/.scripts:$HOME/.cabal/bin:/$HOME/.scripts/gsd:$HOME/apps/android/android-sdk-linux_86/tools:/usr/local/sphinx/bin/:$HOME/node_modules/.bin:$HOME/Dropbox/private/scripts:/usr/local/go/bin
 ECLIPSE_HOME=$HOME/apps/eclipse
 FRIENDLY_HOSTNAME='0'
 set expand-tilde off
@@ -151,7 +151,6 @@ if [[ ! -z "$PS1" ]] ; then
 
   source ~/.bashrc_extensions
 
-  export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 fi
 #source rvm
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
@@ -161,3 +160,7 @@ fi
 source ~/.bashlocal.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -72,7 +72,7 @@
         <tr>
           <td class="line_item_name"><%=li[0]%></td>
           <td><%=li[1]%></td>
-          <td class='price'>$ <%=li[2]%></td>
+          <td class='price'><%= currency %> <%=li[2]%></td>
         </tr>
         <% end %>
       </table>
@@ -81,11 +81,11 @@
     <div class="footer">
       <div class="note">
       <p>
-        Cosmicvent Software Pvt Ltd, 3rd Floor, GG Enclave; Beside Mirza Steels, Asifnagar road, Mehdipatnam, Hyderabad.
+        Cosmicvent Software Pvt Ltd, 3rd Floor, # 10-2-300/A/2, Nukkula Arcade, ITI Mallepally Cross Roads, Above Canara Bank, Vijaya nagar Colony, Hyderabad. - 500057.
         Please contact <a href="mailto:support@cosmicvent.com">support@cosmicvent.com</a> immediately if you have any questions or concerns about the contents of this invoice.</p>
       </div>
       <div class="total">
-        <h4>$ <%=line_items.inject(0){|x, y| y[2].to_i + x}%></h4>
+        <h4><%= currency %> <%=line_items.inject(0){|x, y| y[2].to_i + x}%></h4>
       </div>
     </div>
 

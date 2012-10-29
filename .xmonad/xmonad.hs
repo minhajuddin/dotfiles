@@ -29,7 +29,7 @@ myBaseConfig = gnomeConfig
 --{{{configuration
 myWorkspaces = ["1:code", "2:web", "3:term", "4:irc", "5:gimp", "6:misc", "7:junk", "8:fullscreen", "9:im"]
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ffff00"
+myFocusedBorderColor = "#D14836"
 
 --screenWidth::Word32
 --screenHeight::Word32
@@ -181,6 +181,6 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
-        , focusFollowsMouse  = True
+        -- , focusFollowsMouse  = True
         }
 

@@ -124,7 +124,6 @@ alias te='t -e'
 
 #alias sumgtlog=cut -d'm' -f 1 | awk -F'h' '{s = s + $1 * 60 + $2}; END {print int(s/60) ':' s%60 }'
 alias path='type -P'
-alias xc='xclip'
 alias sus='sudo service'
 alias tmux='TERM=screen-256color-bce tmux'
 
@@ -135,3 +134,4 @@ alias rmd='recordmydesktop --width 1920 --height 1080 --full-shots --fps 30 --ch
 
 alias wb='python -m SimpleHTTPServer 8090'
 alias irb='pry'
+#alias sudo='sudo env PATH=$PATH'

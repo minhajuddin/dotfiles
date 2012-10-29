@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Author: Khaja Minhajuddin (minhajuddink+bash@gmail.com)
+
+# Script to deploy and update version flags in heroku
+
+# Usage: hd [git-remote] [git-branch]
+# the default git remote is 'heroku' and default branch is 'master'
+
+### This program is free software; you can redistribute it and/or modify
+### it under the terms of the GNU General Public License as published by
+### the Free Software Foundation; either version 2 of the License, or
+### (at your option) any later version.
+
+### This program is distributed in the hope that it will be useful,
+### but WITHOUT ANY WARRANTY; without even the implied warranty of
+### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+### GNU General Public License for more details.
+
+### You should have received a copy of the GNU General Public License
+### along with this program; if not, write to the Free Software
+### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+defaultRemote="heroku"
+defaultBranch="master"
+remote=${1:-$defaultRemote} #default to the defaultRemote
+branch=${2:-$defaultBranch} #default to the defaultBranch
+app="$(git remote -v | grep "^$remote.*fetch)" | sed -r 's/^.*git@heroku\.com:([A-Za-z0-9_-]+)\.git.*$/\1/g')" #extract the heroku appname from the git remote
+
+echo "pushing to remote: '$remote', branch: '$branch', app: '$app'"
+
+git push "$remote" "$branch:master" #push to heroku
+
+if [ $? != 0 ]
+then
+  echo 'error pushing commits'
+  exit $?
+fi
+
+#run db:migrate if there are any migrations
+
+#update version flag
+echo "updating version flag"
+heroku config:add APP_VERSION="$(git log "$( git ls-remote heroku | grep 'refs/heads/master' | cut -f1 )" -1 --date=short --format="%ad-%h"|sed 's/-/./g')" --app "$app"

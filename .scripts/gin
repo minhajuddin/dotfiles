@@ -11,7 +11,8 @@ end
 filename = ARGV.first
 data = File.readlines(filename)
 #render erb
-client_name, client_address = data.first.split(';').map{|x| x.chomp}
+client_name, client_address, currency = data.first.split(';').map{|x| x.chomp}
+currency ||= '$'
 template = ERB.new(File.read("/home/minhajuddin/.templates/invoice.html.erb"))
 line_items = data[1..-1].map {|x| x.split(';').map{|y| y.chomp}}
 #render html or pdf

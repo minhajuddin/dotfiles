@@ -110,6 +110,7 @@ alias cdeploy='(time (cap deploy && alert deployed) )&'
 alias gclone='cd ~/repos && git clone '
 alias fs='foreman start'
 
+alias xc='xclip -selection clipboard'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
 alias rake='bundle exec rake'
 alias rdm='rake db:migrate'

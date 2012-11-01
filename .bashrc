@@ -2,7 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=$PATH:$HOME/bin:$HOME/.scripts:$HOME/.cabal/bin:/$HOME/.scripts/gsd:$HOME/apps/android/android-sdk-linux_86/tools:/usr/local/sphinx/bin/:$HOME/node_modules/.bin:$HOME/Dropbox/private/scripts
+export GOROOT=$HOME/go
+export PATH=$PATH:$HOME/bin:$HOME/.scripts:$HOME/.cabal/bin:/$HOME/.scripts/gsd:$HOME/apps/android/android-sdk-linux_86/tools:/usr/local/sphinx/bin/:$HOME/node_modules/.bin:$HOME/Dropbox/private/scripts:$HOME/go/bin
 ECLIPSE_HOME=$HOME/apps/eclipse
 FRIENDLY_HOSTNAME='0'
 set expand-tilde off

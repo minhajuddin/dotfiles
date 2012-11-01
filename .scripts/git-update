@@ -1,0 +1,12 @@
+#!/bin/bash
+ROOT_DIR="$HOME/r"
+
+for repo in $(ls $ROOT_DIR)
+do
+  cd "$ROOT_DIR/$repo"
+  for remote in $(git remote)
+  do
+    echo "fetching $repo $remote"
+    git fetch $remote
+  done
+done

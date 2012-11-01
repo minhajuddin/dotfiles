@@ -3,7 +3,7 @@ require 'time'
 
 slot_op = `~/.scripts/slots`.chomp
 #t_op = `~/.scripts/t --xmobar`.chomp
-log_lines = `tail -30 ~/.gtimelog/timelog.txt`.lines.to_a.reverse.map{|x| x.chomp}
+log_lines = `tail -100 ~/.gtimelog/timelog.txt`.lines.to_a.reverse.map{|x| x.chomp}
 
 def time_since(line)
   gt_op = Time.now - Time.strptime(line[0..15], "%Y-%m-%d %H:%M")

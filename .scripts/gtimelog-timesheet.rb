@@ -4,6 +4,11 @@ require 'time'
 task = ARGV.first
 exit -1 unless task
 
+#at every @reboot trigger a cron task to do the following
+#read the last 1000 lines
+#extract information from it
+#group by date and first word
+
 days = File.readlines('/tmp/foo')
 .map{|x| /(?<date>\d{4}-\d{2}-\d{2}) (?<hours>\d{2}:\d{2}): (?<task>.*$)/.match(x.chomp)}
 .compact

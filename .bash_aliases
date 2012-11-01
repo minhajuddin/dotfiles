@@ -9,6 +9,7 @@ alias igrep='grep -i'
 
 alias up='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
 alias ps?='ps aux|grep -v grep | grep -i'
+alias xc='xclip -selection clipboard'
 
 alias gi='gem install'
 

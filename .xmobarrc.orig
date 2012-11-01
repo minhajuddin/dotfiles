@@ -16,5 +16,9 @@ Config {
                     ]
        , sepChar = "%"
        , alignSep = "}{"
+<<<<<<< HEAD
+       , template = "%StdinReader%}%info% <fc=#ee9a00>%pomodoro%</fc> {c-%cpu% m-%memory% e-%eth0% <fc=#ee9a00>%date%</fc> "
+=======
        , template = "%StdinReader%}%info% <fc=#ee9a00>%pomodoro%</fc> {c:%cpu% m:%memory% i:%wlan0%%eth0% b:%battery% <fc=#ee9a00>%date%</fc> "
+>>>>>>> origin/master
        }

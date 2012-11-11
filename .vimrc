@@ -466,3 +466,4 @@ function TrimWhiteSpace()
 let g:slime_target = "tmux"
 nnoremap <C-o> :tabedit %<CR>
 nnoremap <C-d> :tabclose<CR>
+let g:syntastic_ruby_exec="ruby-1.9.2-p290"

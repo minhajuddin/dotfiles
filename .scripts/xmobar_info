@@ -3,7 +3,7 @@ require 'time'
 
 slot_op = `~/.scripts/slots`.chomp
 #t_op = `~/.scripts/t --xmobar`.chomp
-log_lines = `tail -30 ~/.gtimelog/timelog.txt`.lines.to_a.reverse.map{|x| x.chomp}
+log_lines = `tail -100 ~/.gtimelog/timelog.txt`.lines.to_a.reverse.map{|x| x.chomp}
 
 def time_since(line)
   gt_op = Time.now - Time.strptime(line[0..15], "%Y-%m-%d %H:%M")
@@ -13,10 +13,12 @@ def time_since(line)
   gt_op = "#{hours}:#{minutes}"
 end
 
+stack = `/home/minhajuddin/.scripts/s top`.chomp
+
 
 cth_line = log_lines[log_lines.find_index{|x| x.length == 0} - 1]
 current_task_hours = time_since(log_lines.first)
 total_hours = time_since(cth_line)
 
 #print "<fc=#ee9a00>#{slot_op}</fc> #{current_task_hours}/#{total_hours} <fc=#ee9a00>#{t_op}</fc> "
-print "<fc=#ee9a00>#{slot_op}</fc> #{current_task_hours}/#{total_hours}"
+print "#{stack} / <fc=#ee9a00>#{slot_op}</fc> #{current_task_hours}/#{total_hours}"

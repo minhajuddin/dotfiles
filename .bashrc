@@ -151,7 +151,6 @@ if [[ ! -z "$PS1" ]] ; then
 
   source ~/.bashrc_extensions
 
-  export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 fi
 #source rvm
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

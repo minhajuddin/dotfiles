@@ -9,6 +9,7 @@ alias igrep='grep -i'
 
 alias up='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
 alias ps?='ps aux|grep -v grep | grep -i'
+alias xc='xclip -selection clipboard'
 
 alias gi='gem install'
 
@@ -109,6 +110,7 @@ alias cdeploy='(time (cap deploy && alert deployed) )&'
 alias gclone='cd ~/repos && git clone '
 alias fs='foreman start'
 
+alias xc='xclip -selection clipboard'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
 alias rake='bundle exec rake'
 alias rdm='rake db:migrate'
@@ -124,7 +126,6 @@ alias te='t -e'
 
 #alias sumgtlog=cut -d'm' -f 1 | awk -F'h' '{s = s + $1 * 60 + $2}; END {print int(s/60) ':' s%60 }'
 alias path='type -P'
-alias xc='xclip'
 alias sus='sudo service'
 alias tmux='TERM=screen-256color-bce tmux'
 

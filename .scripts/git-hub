@@ -15,5 +15,5 @@ then
   echo "You have not yet pushed that commit ($SHA) to GitHub."
   echo "Before you can view it on the GitHub website, you must push it."
 else
-  gnome-open  "https://github.com/$REPO/commit/$SHA"
+  gnome-open "https://github.com/$REPO/commit/$SHA"
 fi

@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'clipboard'
+
+if ARGV.empty?
+  Clipboard.copy ARGF.readlines.join("\n")
+else
+  Clipboard.copy ARGV.join(' ')
+end

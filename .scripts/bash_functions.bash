@@ -143,7 +143,7 @@ cc $file -o "$file.out"
 
 
 function exit_if_not_in_sync(){
-  repos=("dotfiles" "linktub"  "timberexpress" )
+  repos=("dotfiles" "linktub"  "timberexpress"  "school_one")
   ret=0
   for repo in ${repos[@]}
   do

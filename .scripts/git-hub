@@ -7,7 +7,7 @@ else
   WHAT=$1
 fi
 
-REPO=`git config --get remote.origin.url | sed -n 's/.*:\(.*\)\.git/\1/p'`
+REPO=$(git config --get remote.origin.url | sed -n 's/.*:\(.*\)\.git/\1/p')
 SHA=`git rev-parse $WHAT`
 
 if [[ -z `git branch -a --contains $SHA | grep origin` ]]

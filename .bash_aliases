@@ -136,4 +136,6 @@ alias rmd='recordmydesktop --width 1920 --height 1080 --full-shots --fps 30 --ch
 
 alias wb='python -m SimpleHTTPServer 8090'
 alias irb='pry'
-#alias sudo='sudo env PATH=$PATH'
+
+alias railserverterse="rs| grep -vE 'Started GET|Served asset|Could not determine' | sed '/^$/d'"
+

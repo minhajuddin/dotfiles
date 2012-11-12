@@ -2,8 +2,9 @@
 set nocompatible
 
 set lazyredraw                  " don't redraw while in macros
-set list                        " show invisible characters
-set listchars=tab:>·,trail:·    " but only show tabs and trailing whitespace
+"set list                        " show invisible characters
+"set listchars=trail:·    " but only show tabs and trailing whitespace
+"set listchars=tab:>·,trail:·    " but only show tabs and trailing whitespace
 set shortmess=atI               " shorten messages and don
 
 let g:Powerline_symbols = 'fancy'
@@ -107,6 +108,7 @@ set smarttab
 
 " Who wants an 8 character tab? Not me!
 set shiftwidth=2
+set tabstop=2
 set softtabstop=2
 
 " Cool tab completion stuff
@@ -155,6 +157,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"Go specific settings
+au BufNewFile,BufRead *.go setlocal expandtab!
+au BufNewFile,BufRead *.go setlocal softtabstop=0
 " set custom file types I've configured
 au BufNewFile,BufRead *.taskr  setf taskr
 au BufNewFile,BufRead nginx.conf  setf nginx

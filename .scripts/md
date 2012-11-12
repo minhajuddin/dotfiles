@@ -23,11 +23,28 @@ end
 <html>
   <head>
     <title><%= title %></title>
-    <link href="markdown.css" rel="stylesheet"></link>
+    <link href="markdown.css" rel="stylesheet" media='screen'></link>
+    <link href="markdown.css" rel="stylesheet" media='print'></link>
     <link href="pygments.css" rel="stylesheet"></link>
+<style type="text/css">
+    @media screen {
+        #footer {
+            display: none;
+        }
+    }
+    @media print {
+        #footer {
+            position: fixed;
+            bottom: 0;
+        }
+    }
+</style>
   </head>
   <body>
     <%= body %>
+    <div id='footer'>
+      Cosmicvent Software, http://cosmicvent.com, +9618085910
+    </div>
   </body>
 </html>
 EOF

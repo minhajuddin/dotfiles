@@ -1,0 +1,4 @@
+#!/bin/sh
+
+source /home/minhajuddin/.bashrc
+/home/minhajuddin/go/bin/godoc -http=:8090

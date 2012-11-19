@@ -28,7 +28,6 @@ __copy_resources(){
   cp -R ./views "$__BUILD_DIR"
   cp -R ./public "$__BUILD_DIR"
   cp -R ./nginx.conf "$__BUILD_DIR"
-  echo "Creating revision file"
   echo "$__APP_REVISION" > "$__BUILD_DIR/REVISION"
 }
 

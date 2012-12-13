@@ -115,3 +115,6 @@
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = git://github.com/jpalardy/vim-slime.git
+[submodule ".vim/bundle/vim-notes"]
+	path = .vim/bundle/vim-notes
+	url = git://github.com/xolox/vim-notes.git

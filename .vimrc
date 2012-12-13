@@ -19,6 +19,11 @@ imap <c-l> <space>=><space>
 "mapleader this is what is used for the special <leader>
 let mapleader=","
 
+let g:notes_directory = '~/Dropbox/notes'
+let g:notes_smart_quotes = 0
+let g:notes_indexfile = '~/Dropbox/notes/index.pickle'
+let g:notes_tagsindex = '~/Dropbox/notes/tags.txt'
+
 "Settings specific to Windows and Linux
 if has("win32") || has("win64")
   let Tlist_Ctags_Cmd='c:\Users\minhajuddin\.vim\tools\ctags\ctags.exe' "TODO: make sure this works

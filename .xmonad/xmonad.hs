@@ -112,6 +112,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1124 (1080), Rectangle 1124 0 (1920 - 1124) 1080, Rectangle 1920 0 1920 1080])
     --, ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1224 (1080), Rectangle 1224 0 (1920 - 1224) 1080, Rectangle 1920 0 1224 1080, Rectangle (1920 + 1224) 0 (1920 - 1224) 1080])
     --, ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 (screenWidth) (screenHeight), Rectangle screenWidth 0 midScreenWidth screenHeight, Rectangle (screenWidth + midScreenWidth) 0 (screenWidth - midScreenWidth) screenHeight])
+    --screencast layout
+    , ((modMask .|. shiftMask, xK_s), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1024 768, Rectangle 1024 0 (1920 - 1024) 1080, Rectangle 1920 0 1920 1080])
     , ((modMask .|. controlMask .|. shiftMask, xK_space), rescreen)
 
     -- misc control

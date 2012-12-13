@@ -9,6 +9,10 @@ set shortmess=atI               " shorten messages and don
 
 let g:Powerline_symbols = 'fancy'
 
+"space to toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
 "insert a hashrocket when <Control+L> is hit in insert mode
 imap <c-l> <space>=><space>
 
@@ -95,7 +99,8 @@ set showcmd
 set diffopt+=iwhite
 
 " Folding Stuffs ==> TODO:Need to set it to a more meaningful value
-set foldmethod=marker
+set foldmethod=syntax
+set foldlevel=2
 
 " Who doesn't like autoindent?
 set autoindent

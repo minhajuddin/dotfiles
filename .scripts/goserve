@@ -1,0 +1,32 @@
+#!/bin/bash
+#Author: Khaja Minhajuddin
+#Script to restart the go webserver by building and restarting the binary whenever html or go files change
+
+function __restart_goserver(){
+  binary="$(basename $(pwd))"
+  echo "building $binary"
+  if go build
+  then
+    echo "killing old process"
+    kill -9 $(pidof "$binary") > /dev/null 2>&1
+    echo "starting '$binary'"
+    ./$binary & #run it in background
+    echo "started with pid: $!"
+  else
+    echo "server restart failed"
+  fi
+}
+
+#cd to the right directory
+cd $1
+__restart_goserver
+#the command before the pipe is a blocking command, i.e. it doesn't end
+inotifywait -mrq --exclude="$(basename $(pwd))" --format '%f' -e close_write $1 | while read file
+do
+  if (echo $file | grep -E '^(.*\.go$)|(.*\.html$)')
+  then
+    echo "--------------------"
+    #once we know that a go file has been written to we run it
+    __restart_goserver
+  fi
+done

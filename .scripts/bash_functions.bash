@@ -2,6 +2,12 @@
 cpr(){
   scp $2 $1:/tmp
 }
+cpl(){
+  scp $2 minhajuddin@192.168.1.$1:/tmp
+}
+ssl(){
+  ssh minhajuddin@192.168.1.$1
+}
 
 tz(){
   tar cf - $1 | gzip > $(basename $1).tar.gz

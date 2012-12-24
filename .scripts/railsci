@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+#Author: Khaja Minhajuddin
+#Date: 2012 Dec 24
+#Script to run a ci build on the local computer after a commit is made
+
+
+require 'securerandom'
+require 'fileutils'
+
+CommitHash = ARGV.shift
+Repodir    = ARGV.shift
+Buildid    = SecureRandom.hex
+DbConfig   = "config/database.yml"
+
+puts "started build for repo:#{Repodir} commit:#{CommitHash} buildid:#{Buildid}"
+#helper functions
+def run(arg)
+  puts "RUNNING #{arg}"
+  system("#{arg} 2>&1")
+end
+#checkout a shallow version in a tmp directory
+Tmpdir = File.join('/tmp', Buildid)
+run("git clone #{Repodir} #{Tmpdir}")
+#cd to this directory
+Dir.chdir(Tmpdir)
+#trust rvmrc
+run("rvm rvmrc trust #{Tmpdir}")
+#checkout the right commit
+run("git checkout #{CommitHash} -b #{Buildid}")
+run("bundle install")
+#tweak database.yml
+File.write(DbConfig, File.readlines(DbConfig).map {|x| x =~ /database:/ ? x.gsub('test', "test_#{Buildid}") :x }.join)
+#migrate db
+run("RAILS_ENV=test bundle exec rake db:create db:migrate")
+#run specs
+puts "Running tests"
+run("RAILS_ENV=test bundle exec rspec spec")
+#drop database
+run("RAILS_ENV=test bundle exec rake db:drop")
+#add a pass fail tag to the original repo
+puts "Finished build for repo:#{Repodir} commit:#{CommitHash} buildid:#{Buildid}"

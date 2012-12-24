@@ -11,6 +11,9 @@ CommitHash = ARGV.shift
 Repodir    = ARGV.shift
 Buildid    = SecureRandom.hex
 DbConfig   = "config/database.yml"
+Tmpdir     = File.join('/tmp', Buildid)
+
+FileUtils.mkdir(Tmpdir)
 
 puts "started build for repo:#{Repodir} commit:#{CommitHash} buildid:#{Buildid}"
 #helper functions
@@ -18,8 +21,19 @@ def run(arg)
   puts "RUNNING #{arg}"
   system("#{arg} 2>&1")
 end
+
+def untag(tag)
+  Dir.chdir Repodir
+  run("git tag -d '#{tag}'")
+  Dir.chdir Tmpdir
+end
+def tag(tag, msg)
+  Dir.chdir Repodir
+  run("git tag -a '#{tag}' -m '#{msg}'")
+  Dir.chdir Tmpdir
+end
 #checkout a shallow version in a tmp directory
-Tmpdir = File.join('/tmp', Buildid)
+tag "processing-#{Buildid}", "Running tests for build"
 run("git clone #{Repodir} #{Tmpdir}")
 #cd to this directory
 Dir.chdir(Tmpdir)
@@ -34,7 +48,13 @@ File.write(DbConfig, File.readlines(DbConfig).map {|x| x =~ /database:/ ? x.gsub
 run("RAILS_ENV=test bundle exec rake db:create db:migrate")
 #run specs
 puts "Running tests"
-run("RAILS_ENV=test bundle exec rspec spec")
+if run("RAILS_ENV=test bundle exec rspec spec")
+  puts "PASSED all tests"
+else
+  #tag the commit as a failure
+  tag "failed-#{Buildid}" , "Failed build"
+end
+untag "processing-#{Buildid}"
 #drop database
 run("RAILS_ENV=test bundle exec rake db:drop")
 #add a pass fail tag to the original repo

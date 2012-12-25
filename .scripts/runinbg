@@ -1,0 +1,9 @@
+#!/bin/bash
+#Author: Khaja Minhajuddin
+#Script to run a command in background redirecting the
+#STDERR and STDOUT to /tmp/runinbg.log in a background task
+
+echo "$(date +%Y-%m-%d:%H:%M:%S): started running $@" >> /tmp/runinbg.log
+cmd="$1"
+shift
+($cmd "$@" 1>> /tmp/runinbg.log 2>&1; notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$cmd $@")&>/dev/null &

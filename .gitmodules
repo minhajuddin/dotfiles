@@ -118,3 +118,6 @@
 [submodule ".vim/bundle/vim-notes"]
 	path = .vim/bundle/vim-notes
 	url = git://github.com/xolox/vim-notes.git
+[submodule ".vim/bundle/vimux"]
+	path = .vim/bundle/vimux
+	url = git://github.com/benmills/vimux.git

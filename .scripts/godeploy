@@ -1,0 +1,72 @@
+#!/bin/bash
+#Stop if any error occurs and print all the commands being executed
+set -ex
+
+#Helpers
+#Function which sets the revision you can change it to your liking
+__set_revision(){
+  __APP_REVISION="$(git log -1 --date=short --format="%ad-%h"|sed 's/-/./g')"
+}
+
+__set_appname(){
+  __APP_NAME=$(basename $(pwd))
+}
+
+#Build go source code and copy the binary to the builds directory
+__build_app(){
+  __BUILD_DIR="./builds/$__APP_NAME-$__APP_REVISION"
+  #recreate directory if it is already present
+  [ -d "$__BUILD_DIR"  ] && rm -rf $__BUILD_DIR
+  mkdir -p $__BUILD_DIR
+  go build -v -o "$__BUILD_DIR/$__APP_NAME"
+}
+
+#TODO: make this configurable
+#Copy the relevant templates/public/meta data (like version) to the builds directory
+#TODO: Add ability to gzip the public resources?
+__copy_resources(){
+  cp -R ./views "$__BUILD_DIR"
+  cp -R ./public "$__BUILD_DIR"
+  cp -R ./nginx.conf "$__BUILD_DIR"
+  echo "$__APP_REVISION" > "$__BUILD_DIR/REVISION"
+}
+
+#tar.gzip it
+__compress_build(){
+  __COMPRESSED_FILE="$__APP_NAME-$__APP_REVISION.tar.gz"
+  __COMPRESSED_BUILD="$__BUILD_DIR.tar.gz"
+  tar cf - "$__BUILD_DIR" | gzip > $__COMPRESSED_BUILD
+}
+
+#Copy them over to the deploy directory on the remote server in a dir with the same symlink
+#TODO: Make this configurable
+__copy_build_to_server(){
+  echo "copying build to server"
+  scp $__COMPRESSED_BUILD cv:/tmp/
+  #TODO: Copy build script to the server so that it can be executed in one go
+  #Commands to be executed on the server
+  #Symlink the current directory to point to the version directory
+  #Restart the gosnip upstart process
+  ssh cv "bash -s" <<EOL
+#!/bin/bash
+set -ex
+mkdir -p /var/www/$__APP_NAME
+cd /var/www/$__APP_NAME
+tar -xvf /tmp/$__COMPRESSED_FILE
+rm current && true
+ln -ns "/var/www/gosnip/builds/$__APP_NAME-$__APP_REVISION" current
+sudo restart gosnip && true
+echo "deployed"
+EOL
+}
+
+#TODO: Should add a fail fast command which fails if this isn't the right current directory or the first arg is not a valid go package
+#Create a versioned/timestamped directory in ./builds
+__set_revision
+echo "building app for $__APP_REVISION"
+__set_appname
+__build_app
+__copy_resources
+__compress_build
+__copy_build_to_server
+echo "deployed app version: $__APP_REVISION"

@@ -31,9 +31,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/vim-space"]
-	path = .vim/bundle/vim-space
-	url = git://github.com/spiiph/vim-space.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
@@ -118,3 +115,9 @@
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = git://github.com/jpalardy/vim-slime.git
+[submodule ".vim/bundle/vim-notes"]
+	path = .vim/bundle/vim-notes
+	url = git://github.com/xolox/vim-notes.git
+[submodule ".vim/bundle/vimux"]
+	path = .vim/bundle/vimux
+	url = git://github.com/benmills/vimux.git

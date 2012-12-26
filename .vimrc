@@ -9,11 +9,20 @@ set shortmess=atI               " shorten messages and don
 
 let g:Powerline_symbols = 'fancy'
 
+"space to toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
 "insert a hashrocket when <Control+L> is hit in insert mode
 imap <c-l> <space>=><space>
 
 "mapleader this is what is used for the special <leader>
 let mapleader=","
+
+let g:notes_directory = '~/Dropbox/notes'
+let g:notes_smart_quotes = 0
+let g:notes_indexfile = '~/Dropbox/notes/index.pickle'
+let g:notes_tagsindex = '~/Dropbox/notes/tags.txt'
 
 "Settings specific to Windows and Linux
 if has("win32") || has("win64")
@@ -95,7 +104,8 @@ set showcmd
 set diffopt+=iwhite
 
 " Folding Stuffs ==> TODO:Need to set it to a more meaningful value
-set foldmethod=marker
+set foldmethod=syntax
+set foldlevel=2
 
 " Who doesn't like autoindent?
 set autoindent
@@ -467,6 +477,16 @@ function TrimWhiteSpace()
 "
 
 let g:slime_target = "tmux"
-nnoremap <C-o> :tabedit %<CR>
-nnoremap <C-d> :tabclose<CR>
+"nnoremap <C-o> :tabedit %<CR>
+"nnoremap <C-d> :tabclose<CR>
 let g:syntastic_ruby_exec="ruby-1.9.2-p290"
+
+
+function! RunSpecs()
+  :silent!!runinbg bundle exec rspec %
+  redraw!
+  echo 'triggered rspec'
+endfunction
+
+nnoremap <C-d> :call RunSpecs()<cr>
+

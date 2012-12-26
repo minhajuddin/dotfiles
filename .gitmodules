@@ -7,24 +7,12 @@
 [submodule ".vim/bundle/vim-coffee-script"]
 	path = .vim/bundle/vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/sweet-rspec-vim"]
-	path = .vim/bundle/sweet-rspec-vim
-	url = git://github.com/duskhacker/sweet-rspec-vim.git
 [submodule ".vim/bundle/scss-syntax.vim.git"]
 	path = .vim/bundle/scss-syntax.vim.git
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/rbrepl.vim"]
-	path = .vim/bundle/rbrepl.vim
-	url = git://github.com/Bogdanp/rbrepl.vim.git
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
-[submodule ".vim/bundle/gist-vim"]
-	path = .vim/bundle/gist-vim
-	url = git://github.com/mattn/gist-vim.git
 [submodule ".vim/bundle/rainbow_parentheses"]
 	path = .vim/bundle/rainbow_parentheses
 	url = git://github.com/kien/rainbow_parentheses.vim.git
@@ -34,9 +22,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/indexedsearch"]
-	path = .vim/bundle/indexedsearch
-	url = git://github.com/vim-scripts/IndexedSearch.git
 [submodule ".vim/bundle/vim-powerline"]
 	path = .vim/bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
@@ -70,15 +55,6 @@
 [submodule ".vim/bundle/vim-less"]
 	path = .vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule ".vim/bundle/zenburn"]
-	path = .vim/bundle/zenburn
-	url = git://github.com/jnurmine/Zenburn.git
-[submodule ".vim/bundle/desert/colors"]
-	path = .vim/bundle/desert/colors
-	url = git://github.com/fugalh/desert.vim.git
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule ".vim/bundle/vividchalk"]
 	path = .vim/bundle/vividchalk
 	url = git://github.com/minhajuddin/vim-vividchalk.git
@@ -112,12 +88,3 @@
 [submodule ".vim/bundle/vim-ragtag"]
 	path = .vim/bundle/vim-ragtag
 	url = git://github.com/tpope/vim-ragtag.git
-[submodule ".vim/bundle/vim-slime"]
-	path = .vim/bundle/vim-slime
-	url = git://github.com/jpalardy/vim-slime.git
-[submodule ".vim/bundle/vim-notes"]
-	path = .vim/bundle/vim-notes
-	url = git://github.com/xolox/vim-notes.git
-[submodule ".vim/bundle/vimux"]
-	path = .vim/bundle/vimux
-	url = git://github.com/benmills/vimux.git

@@ -108,7 +108,6 @@ alias syslog='tail -f /var/log/syslog'
 
 alias cdeploy='(time (cap deploy && alert deployed) )&'
 alias gclone='cd ~/repos && git clone '
-alias fs='foreman start'
 
 alias xc='xclip -selection clipboard'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
@@ -139,3 +138,6 @@ alias irb='pry'
 
 alias railserverterse="rs| grep -vE 'Started GET|Served asset|Could not determine' | sed '/^$/d'"
 
+alias sm='/home/minhajuddin/.scripts/msmtp-runqueue.sh'
+alias lm='/home/minhajuddin/.scripts/msmtp-listqueue.sh'
+alias fm='/usr/bin/fetchmail'

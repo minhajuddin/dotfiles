@@ -1,4 +1,4 @@
-snippet boiler
+snippet blr
 package main
 
 import (
@@ -7,5 +7,18 @@ import (
 
 func main(){
 	$0
+}
+endsnippet
+
+snippet ife
+if ${1:err} != nil {
+  log.Println($1)
+}
+$0
+endsnippet
+
+snippet fori
+for ${1:i} := 0; $1 < $2; $1++ {
+  $0
 }
 endsnippet

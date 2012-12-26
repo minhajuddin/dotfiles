@@ -5,9 +5,10 @@ Config {
        , position = TopW L 86
        , lowerOnStart = True
        , commands = [ Run Network "eth0" ["-t", "<rx>/<tx>", "-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Network "wlan0" ["-t", "<rx>/<tx>", "-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-t", "<total>","-L","0","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","<usedratio>"] 10
-                    , Run Battery ["-t","<left>","-L","30","-H","70","--low", "red","--normal","yellow","--high","green"] 10
+                    , Run BatteryP ["BAT0"] ["-t", "-c", "<acstatus><watts> <left>%", "-L", "10", "-H", "80", "-p", "3", "--", "-O", "<fc=green>On</fc> - ", "-o", "", "-L", "-15", "-H", "-5", "-l", "red", "-m", "blue", "-h", "green"] 600
                     , Run StdinReader
                     , Run CommandReader "~/.pymodoro/pymodoro.py -i 5 80 10" "pomodoro"
                     , Run Date "%a %b %_d %H:%M" "date" 10
@@ -15,5 +16,6 @@ Config {
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader%}%info% <fc=#ee9a00>%pomodoro%</fc> {c:%cpu% m:%memory% i:%eth0% <fc=#ee9a00>%date%</fc> "
+       , template = "%StdinReader%}%info% <fc=#ee9a00>%pomodoro%</fc> {c:%cpu% m:%memory% i:%eth0%%wlan0% b:%battery% <fc=#ee9a00>%date%</fc> "
        }
+

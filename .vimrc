@@ -151,12 +151,14 @@ let g:Tlist_Inc_Winwidth = 0
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
 " automatic commands
 "ruby
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"mutt
+au BufRead /tmp/mutt-* set tw=72
+au BufRead /tmp/mutt-* setlocal spell!
 "Go specific settings
 au BufNewFile,BufRead *.go setlocal expandtab!
 au BufNewFile,BufRead *.go setlocal softtabstop=0
@@ -415,8 +417,9 @@ function TrimWhiteSpace()
   set wrap!
 
   " Command T settings
-  map <leader>t :CommandT<cr>
-  map <leader>cf :CommandTFlush<cr>
+  map <leader>t :CtrlP<cr>
+  map <leader>cf :CtrlPClearCache<cr>
+
 
   " Buffer commands
   noremap <silent> <leader>bd :bd<CR>

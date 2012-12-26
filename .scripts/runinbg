@@ -7,4 +7,4 @@ echo "$(date +%Y-%m-%d:%H:%M:%S): started running $@" >> /tmp/runinbg.log
 rawcmd="$@"
 cmd="$1"
 shift
-($cmd "$@" 1>> /tmp/runinbg.log 2>&1; notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$rawcmd")&>/dev/null &
+($cmd "$@" 1>> /tmp/runinbg.log 2>&1; notify-send --urgency=low -i "$([ $? = 0 ] && echo '/home/minhajuddin/.icons/ruby_green_icon.png' || echo error)" "$rawcmd")&>/dev/null &

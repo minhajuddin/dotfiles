@@ -49,7 +49,7 @@ run("RAILS_ENV=test bundle exec rake db:create db:migrate")
 #run specs
 puts "Running tests"
 if run("RAILS_ENV=test bundle exec rspec spec")
-  system("notify-send --urgency=low -i 'terminal' 'Tests passed for the commit - #{CommitHash}'")
+  system("notify-send --urgency=low -i '/home/minhajuddin/.icons/ruby_green_icon.png' 'Tests passed for the commit - #{CommitHash}'")
 else
   #tag the commit as a failure
   tag "failed-#{Buildid}" , "Failed build"

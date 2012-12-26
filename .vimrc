@@ -485,7 +485,7 @@ let g:syntastic_ruby_exec="ruby-1.9.2-p290"
 function! RunSpecs()
   :silent!!runinbg bundle exec rspec %
   redraw!
-  echo 'triggered rspec'
+  echo "triggered rspec for" expand("%")
 endfunction
 
 nnoremap <C-d> :call RunSpecs()<cr>

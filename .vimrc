@@ -301,7 +301,7 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
       \ . ">"<CR>
 
 function! RunSpecs()
-  :silent!!runinbg bundle exec rspec %
+  :silent!!b bundle exec rspec %
   redraw!
   echo "triggered rspec for" expand("%")
 endfunction

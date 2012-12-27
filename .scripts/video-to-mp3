@@ -1,0 +1,9 @@
+#!/bin/bash
+#Script to convert video files to audio files
+
+for file in "$@"
+do
+  echo "=================================================="
+  echo "converting $file into mp3"
+  ffmpeg -i $file -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 "$file.mp3"
+done

@@ -238,6 +238,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " mutt
 autocmd BufRead /tmp/mutt-* set tw=72
 autocmd BufRead /tmp/mutt-* setlocal spell!
+"C specific settings
+autocmd FileType c,cpp setlocal expandtab!
+autocmd FileType c,cpp setlocal  softtabstop=0
 "Go specific settings
 autocmd BufNewFile,BufRead *.go setlocal expandtab!
 autocmd BufNewFile,BufRead *.go setlocal softtabstop=0

@@ -42,7 +42,7 @@ else
 endif
 
 " html2haml
-:vmap <leader>h :!/home/minhajuddin/.rvm/bin/r_html2haml -e<cr>
+:vmap <leader>h :!/home/minhajuddin/.rvm/bin/vim_html2haml<cr>
 :vmap <leader>s :!/home/minhajuddin/.scripts/msum<cr>
 
 " If the current buffer has never been saved, it will have no name,
@@ -162,6 +162,7 @@ let g:Tlist_Inc_Winwidth = 0
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+au BufNewFile,BufRead README* setlocal tw=80
 " automatic commands
 "ruby
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1

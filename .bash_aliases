@@ -108,7 +108,6 @@ alias syslog='tail -f /var/log/syslog'
 
 alias cdeploy='(time (cap deploy && alert deployed) )&'
 alias gclone='cd ~/repos && git clone '
-alias fs='foreman start'
 
 alias xc='xclip -selection clipboard'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
@@ -138,4 +137,6 @@ alias wb='python -m SimpleHTTPServer 8090'
 alias irb='pry'
 
 alias railserverterse="rs| grep -vE 'Started GET|Served asset|Could not determine' | sed '/^$/d'"
+
+alias railsmodels='railroady -M | dot -Tsvg > doc/models.svg'
 

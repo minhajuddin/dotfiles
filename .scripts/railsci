@@ -41,14 +41,14 @@ Dir.chdir(Tmpdir)
 run("rvm rvmrc trust #{Tmpdir}")
 #checkout the right commit
 run("git checkout #{CommitHash} -b #{Buildid}")
-run("bundle install")
+run("bundle install --binstubs")
 #tweak database.yml
 File.write(DbConfig, File.readlines(DbConfig).map {|x| x =~ /database:/ ? x.gsub('test', "test_#{Buildid}") :x }.join)
 #migrate db
-run("RAILS_ENV=test bundle exec rake db:create db:migrate")
+run("RAILS_ENV=test bin/rake db:create db:migrate")
 #run specs
 puts "Running tests"
-if run("RAILS_ENV=test bundle exec rspec spec")
+if run("RAILS_ENV=test bin/rspec spec")
   system("notify-send --urgency=low -i '/home/minhajuddin/.icons/ruby_green_icon.png' 'Tests passed for the commit - #{CommitHash}'")
 else
   #tag the commit as a failure
@@ -57,6 +57,6 @@ else
 end
 untag "processing-#{Buildid}"
 #drop database
-run("RAILS_ENV=test bundle exec rake db:drop")
+run("RAILS_ENV=test bin/rake db:drop")
 #add a pass fail tag to the original repo
 puts "Finished build for repo:#{Repodir} commit:#{CommitHash} buildid:#{Buildid}"

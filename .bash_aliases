@@ -72,16 +72,11 @@ alias bi='bundle install'
 alias bu='bundle update'
 
 alias r='rails'
-alias rc='./script/rails console'
-alias rg='./script/rails generate'
-alias rs='./script/rails server'
-alias rsa='./script/rails server -p 3030'
-alias rsb='./script/rails server -p 3040'
-
-alias rspec='bundle exec rspec'
-
-alias ts='bundle exec thin start&'
-alias u='bundle exec unicorn'
+alias rc='rails console'
+alias rg='rails generate'
+alias rs='rails server'
+alias rsa='rails server -p 3030'
+alias rsb='rails server -p 3040'
 
 #utilities#
 alias timestamp='date +%Y%m%d%H%M%S'
@@ -111,7 +106,6 @@ alias gclone='cd ~/repos && git clone '
 
 alias xc='xclip -selection clipboard'
 alias webshare='curl -F "sprunge=<-" http://sprunge.us | xclip ; echo "$(xclip -o)?lang"'
-alias rake='bundle exec rake'
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
 alias rds='rake db:seed'

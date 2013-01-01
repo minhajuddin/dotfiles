@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+ARGF.readlines.map(&:chomp).each do |l|
+  system("gnome-open #{l}")
+  sleep 2
+end

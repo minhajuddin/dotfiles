@@ -26,8 +26,8 @@ import XMonad.Layout.Mosaic
 
 myBaseConfig = gnomeConfig
 
---configuration
-myWorkspaces = ["1:web", "2:term", "3:code", "4:irc", "5:gimp", "6:misc", "7:junk", "8:fullscreen", "9:im"]
+--{{{configuration
+myWorkspaces = ["1:code", "2:web", "3:term", "4:irc", "5:gimp", "6:misc", "7:junk", "8:fullscreen", "9:im"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#D14836"
 
@@ -108,8 +108,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     --1920 X 1080
 
-    -- rectangle originx, originy, width, height
-    , ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1124 (1080), Rectangle 1124 0 (1920 - 1124) 1080, Rectangle 1920 0 1920 1080])
+    , ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1920 (1080), Rectangle 1920 0 1224 1080, Rectangle (1920 + 1224) 0 (1920 - 1224) 1080])
     --, ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 1224 (1080), Rectangle 1224 0 (1920 - 1224) 1080, Rectangle 1920 0 1224 1080, Rectangle (1920 + 1224) 0 (1920 - 1224) 1080])
     --, ((modMask .|. shiftMask, xK_space), layoutScreens 3 $ fixedLayout [Rectangle 0 0 (screenWidth) (screenHeight), Rectangle screenWidth 0 midScreenWidth screenHeight, Rectangle (screenWidth + midScreenWidth) 0 (screenWidth - midScreenWidth) screenHeight])
     --screencast layout
@@ -135,8 +134,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayout = onWorkspace "5:gimp" gimp $
-           onWorkspace "2:term"  htiled $
-           onWorkspace "1:web"  webdev $
+           onWorkspace "3:term"  htiled $
            onWorkspace "9:im"  htiled $
            onWorkspace "8:fullscreen"  (noBorders Full) $
     avoidStruts $ toggleLayouts (noBorders Full)
@@ -144,7 +142,6 @@ myLayout = onWorkspace "5:gimp" gimp $
     where
         tiled   =  ResizableTall nmaster delta ratio []
         htiled = avoidStruts $ Tall hmaster delta ratio
-        webdev = Mirror $ Tall 1 (3/100) (80/100)
         hmaster = 8
         nmaster = 1
         delta   = 2/100
@@ -153,7 +150,7 @@ myLayout = onWorkspace "5:gimp" gimp $
                    reflectHoriz $
                    withIM (0.15) (Role "gimp-dock") Full
 
---configuration
+--}}}configuration
 
 --fullscreenLayout = named "fullscreen" $ noBorders Full
 

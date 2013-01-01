@@ -140,3 +140,6 @@ alias railserverterse="rs| grep -vE 'Started GET|Served asset|Could not determin
 
 alias railsmodels='railroady -M | dot -Tsvg > doc/models.svg'
 
+alias sm='/home/minhajuddin/.scripts/msmtp-runqueue.sh'
+alias lm='/home/minhajuddin/.scripts/msmtp-listqueue.sh'
+alias fm='/usr/bin/fetchmail'

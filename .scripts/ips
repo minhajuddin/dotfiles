@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'socket'
+
+ARGF.map{|x| x.chomp.gsub('http://', '').gsub(/\/.*/, '').strip}.each do |l|
+  begin
+    STDERR.puts "finding ip of *#{l}*"
+    puts "#{l}, #{IPSocket.getaddress(l)}"
+    l = "www." + l
+    puts "#{l}, #{IPSocket.getaddress(l)}"
+  rescue Exception => ex
+    STDERR.puts "#{l} #{ex}"
+  end
+end

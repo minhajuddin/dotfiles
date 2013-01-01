@@ -10,15 +10,15 @@ func main(){
 }
 endsnippet
 
-snippet fori
-for i:= 0; i< $1; i++ {
-	$0
-}
-endsnippet
-
 snippet ife
 if ${1:err} != nil {
   log.Fatal("$2", $1)
 }
 $0
+endsnippet
+
+snippet fori
+for ${1:i} := 0; $1 < $2; $1++ {
+  $0
+}
 endsnippet

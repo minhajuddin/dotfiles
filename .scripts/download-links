@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'uri'
+
+ARGF.lines.each do |link|
+  link = link.chomp
+  filename = File.basename(URI(link).path)
+  if File.exists?(filename)
+    puts "=================================================="
+    puts "ALREADY DOWNLOADED: #{filename}"
+    puts "=================================================="
+    system("wget --continue #{link}")
+  else
+    puts "=================================================="
+    puts "DOWNLOADING: #{filename}"
+    puts "=================================================="
+    system("wget #{link}")
+  end
+end

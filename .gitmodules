@@ -58,9 +58,6 @@
 [submodule ".vim/bundle/vividchalk"]
 	path = .vim/bundle/vividchalk
 	url = git://github.com/minhajuddin/vim-vividchalk.git
-[submodule ".scripts/taskr"]
-	path = .scripts/taskr
-	url = git://github.com/minhajuddin/taskr.git
 [submodule ".vim/bundle/buftabs"]
 	path = .vim/bundle/buftabs
 	url = git://github.com/vim-scripts/buftabs.git

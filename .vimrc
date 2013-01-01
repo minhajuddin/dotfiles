@@ -300,12 +300,22 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
       \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
       \ . ">"<CR>
 
-function! RunSpecs()
-  :silent!!b bundle exec rspec %
-  redraw!
-  echo "triggered rspec for" expand("%")
+function! RunHandler()
+  " to save the cursor position
+  let l:winview = winsaveview()
+  if &ft == "go"
+    :silent!$r!go run % | sed 's/^/\/\//g'
+    redraw!
+    echo "triggered go run " expand("%")
+  elseif &ft == "ruby"
+    :silent!!b bundle exec rspec %
+    redraw!
+    echo "triggered rspec for" expand("%")
+  endif
+  call winrestview(l:winview)
 endfunction
-nnoremap <C-d> :call RunSpecs()<cr>
+nnoremap <C-d> :call RunHandler()<cr>
+
 
 " ==================================================
 "TODO

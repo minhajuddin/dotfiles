@@ -6,5 +6,6 @@ do
   if [ "$filename" != "$new_filename" ]
   then
     mv "$filename" "$new_filename"
+    echo $new_filename
   fi
 done

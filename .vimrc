@@ -88,7 +88,6 @@ let g:xptemplate_vars="author=Khaja Minhajuddin&email=minhajuddin.k@gmail.com"
 let g:xptemplate_brace_complete = ''
 let g:xptemplate_key = '<Tab>'
 let g:xptemplate_key_pum_only = '<S-Tab>'
-
 "supertab config
 let g:SuperTabMappingForward = '<c-space>'
 let g:SuperTabMappingBackward = '<s-c-space>'
@@ -242,6 +241,7 @@ autocmd BufRead /tmp/mutt-* setlocal spell!
 autocmd FileType c,cpp setlocal expandtab!
 autocmd FileType c,cpp setlocal  softtabstop=0
 "Go specific settings
+autocmd Filetype go set makeprg=go\ build
 autocmd BufNewFile,BufRead *.go setlocal expandtab!
 autocmd BufNewFile,BufRead *.go setlocal softtabstop=0
 " set custom file types I've configured
@@ -304,7 +304,7 @@ function! RunHandler()
   " to save the cursor position
   let l:winview = winsaveview()
   if &ft == "go"
-    :silent!$r!go run % | sed 's/^/\/\//g'
+    :silent!$r!go run % 2>&1 | sed 's/^/\/\//g'
     redraw!
     echo "triggered go run " expand("%")
   elseif &ft == "ruby"

@@ -13,6 +13,8 @@ alias xc='xclip -selection clipboard'
 
 alias gi='gem install'
 
+alias dir-size='du -cs -BM'
+
 alias se='s edit'
 alias sa='s append'
 
@@ -20,7 +22,7 @@ alias symlink_files='for file in *; do ln -s $(pwd)/$file $HOME/bin/$file; done'
 
 alias mongodb_repair='rm /home/minhajuddin/dbs/mongod.lock && mongod --dbpath=/home/minhajuddin/dbs/ --repair && sudo start mongodb'
 
-alias v='gvim --remote-silent'
+alias v='gvim --remote-silent &>/dev/null'
 
 #heroku stuff
 alias hl='heroku logs --tail'
@@ -68,7 +70,7 @@ alias testlog='tail -f log/test.log'
 
 #bundler stuff
 alias bx='bundle exec'
-alias bi='bundle install'
+alias bi='bundle install --binstubs'
 alias bu='bundle update'
 
 alias r='rails'

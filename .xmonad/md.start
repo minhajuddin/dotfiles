@@ -25,7 +25,7 @@ fi
 
 #/usr/bin/firefox &
 /usr/bin/gtimelog &
-sleep 15
-/usr/bin/skype &
-sleep 15
-/usr/bin/pidgin &
+#sleep 15
+#/usr/bin/skype &
+#sleep 15
+#/usr/bin/pidgin &

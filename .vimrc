@@ -117,7 +117,7 @@ set guicursor+=o:hor50-Cursor
 set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-set wrap
+set wrap!
 
 " set the gui options
 set guioptions=aci

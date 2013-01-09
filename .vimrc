@@ -65,6 +65,10 @@ syntax sync fromstart
 set background=dark
 
 " plugin settings
+" Command T settings
+let g:CommandTMaxFiles=5000
+let g:CommandTMaxHeight=10
+
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 let g:Powerline_symbols = 'fancy'
@@ -211,9 +215,6 @@ noremap <silent> <leader>mK <C-W>K
 noremap <silent> <leader>mH <C-W>H
 noremap <silent> <leader>mJ <C-W>J
 noremap <silent> <leader>cw :close<CR>
-" Command T settings
-map <leader>t :CommandT<cr>
-map <leader>cf :CommandTFlush<cr>
 " Buffer commands
 noremap <silent> <leader>bd :bd<CR>
 

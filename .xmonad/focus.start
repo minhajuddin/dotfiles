@@ -20,6 +20,10 @@ export SSH_AUTH_SOCK
 #for themes and stuff
 gnome-settings-daemon&
 
+#start flux if it is present
+if [ -x /usr/bin/fluxgui ] ; then
+  /usr/bin/fluxgui &> /dev/null &
+fi
 
 # Fire up apps
 gnome-screensaver&

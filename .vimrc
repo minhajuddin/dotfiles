@@ -217,6 +217,7 @@ noremap <silent> <leader>mJ <C-W>J
 noremap <silent> <leader>cw :close<CR>
 " Buffer commands
 noremap <silent> <leader>bd :bd<CR>
+map <leader>a :execute 'Ack'<cr>
 
 " ==================================================
 " TEXT TRANSFORMATION

@@ -76,7 +76,7 @@ alias bu='bundle update'
 alias r='rails'
 alias rc='rails console'
 alias rg='rails generate'
-alias rs='rails server'
+alias rs='bin/unicorn -p 3000 || bin/rails server || rails server'
 alias rsa='rails server -p 3030'
 alias rsb='rails server -p 3040'
 

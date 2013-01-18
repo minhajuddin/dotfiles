@@ -146,8 +146,14 @@ set complete=.,w,b,t
 
 " When completing by tag, show the whole tag, not just the function name
 set showfulltag
+" Syntastic settings
 let g:syntastic_ruby_exec="ruby-1.9.2-p290"
-
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='✱✱'
+let g:syntastic_style_error_symbol='✱✱'
+let g:syntastic_warning_symbol='❯❯'
+let g:syntastic_style_warning_symbol='❯❯'
+"let g:syntastic_auto_loc_list=1
 " Settings specific to gvim
 if has("gui_running")
   " maximizes the gvim window
@@ -175,8 +181,6 @@ map <leader>nt :execute 'NERDTreeToggle'<cr>
 map <leader>nc :execute 'NERDTreeClose'<cr>
 map <leader>nn :execute 'NERDTree'<cr>
 map <leader>bo :execute '!gnome-open %'<cr>
-" js beautify
-nnoremap <silent> <leader>rj :call g:Jsbeautify()<cr>
 
 "FuzzyFinder stuff
 map <leader>ff :execute 'FufFile'<cr>
@@ -193,8 +197,6 @@ map <C-tab> :bnext<cr>
 imap <C-S-tab> <ESC>:bprevious<cr>i
 imap <C-tab> <ESC>:bnext<cr>i
 "nmap <C-n> :tabnew<cr>
-" reformat the file
-map <leader>rf gg=G<cr>
 " remove search highlight
 map <C-l> :nohls<cr>
 " change current directory to the directory of the current buffer
@@ -317,6 +319,23 @@ function! RunHandler()
   call winrestview(l:winview)
 endfunction
 nnoremap <C-d> :call RunHandler()<cr>
+
+" reformat the file
+function! ReformatCode()
+  " to save the cursor position
+  let l:winview = winsaveview()
+  if &ft == "go"
+    :execute 'Fmt'
+    echo "go fmted!"
+  elseif &ft == "javascript"
+    :call g:Jsbeautify()
+    echo "js beautified!"
+  else
+    :exe 'normal gg=G'
+  endif
+  call winrestview(l:winview)
+endfunction
+nnoremap <leader>rf :call ReformatCode()<cr>
 
 
 " ==================================================

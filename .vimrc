@@ -248,6 +248,7 @@ autocmd FileType c,cpp setlocal  softtabstop=0
 autocmd Filetype go set makeprg=go\ build
 autocmd BufNewFile,BufRead *.go setlocal expandtab!
 autocmd BufNewFile,BufRead *.go setlocal softtabstop=0
+autocmd BufWritePre *.go :silent Fmt
 " set custom file types I've configured
 autocmd BufNewFile,BufRead *.taskr  setf taskr
 autocmd BufNewFile,BufRead nginx.conf  setf nginx

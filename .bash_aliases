@@ -139,3 +139,6 @@ alias railsmodels='railroady -M | dot -Tsvg > doc/models.svg'
 alias sm='/home/minhajuddin/.scripts/msmtp-runqueue.sh'
 alias lm='/home/minhajuddin/.scripts/msmtp-listqueue.sh'
 alias fm='/usr/bin/fetchmail'
+
+alias '..'='cd ..'
+alias '...'='cd ../..'

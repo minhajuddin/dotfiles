@@ -244,7 +244,7 @@ autocmd BufRead /tmp/mutt-* setlocal spell!
 "C specific settings
 autocmd FileType c,cpp setlocal expandtab!
 autocmd FileType c,cpp setlocal  softtabstop=0
-"Go specific settings
+"Go golang specific settings
 autocmd Filetype go set makeprg=go\ build
 autocmd BufNewFile,BufRead *.go setlocal expandtab!
 autocmd BufNewFile,BufRead *.go setlocal softtabstop=0
@@ -337,6 +337,14 @@ function! ReformatCode()
   call winrestview(l:winview)
 endfunction
 nnoremap <leader>rf :call ReformatCode()<cr>
+
+" Import package under cursor name
+function! ImportPackageUnderCursor()
+  let word = expand('<cword>')
+  exec 'Import '.word
+endfunction
+nnoremap <c-i> :call ImportPackageUnderCursor()<cr>
+
 
 
 " ==================================================

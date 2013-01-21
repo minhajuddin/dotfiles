@@ -87,6 +87,7 @@ let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 set synmaxcol=200
 " don't automatically highlight the matching parens
 let loaded_matchparen = 1
+set matchtime=0 " to stop automatic moving of cursor to matched paren
 " XPTemplate config stuff
 let g:xptemplate_vars="author=Khaja Minhajuddin&email=minhajuddin.k@gmail.com"
 let g:xptemplate_brace_complete = ''
@@ -148,7 +149,7 @@ set complete=.,w,b,t
 set showfulltag
 " Syntastic settings
 let g:syntastic_ruby_exec="ruby-1.9.2-p290"
-let g:syntastic_check_on_open=1
+"let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✱✱'
 let g:syntastic_style_error_symbol='✱✱'
 let g:syntastic_warning_symbol='❯❯'
@@ -308,14 +309,21 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
 function! RunHandler()
   " to save the cursor position
   let l:winview = winsaveview()
+  let currentfilename = expand('%:t')
   if &ft == "go"
     :silent!$r!go run % 2>&1 | sed 's/^/\/\//g'
     redraw!
     echo "triggered go run " expand("%")
   elseif &ft == "ruby"
-    :silent!!b bundle exec rspec %
-    redraw!
-    echo "triggered rspec for" expand("%")
+    if match(currentfilename, 'spec') > 0
+      :silent!!b bundle exec rspec %
+      redraw!
+      echo "triggered rspec for" expand("%")
+    else
+      :silent!$r! ruby % 2>&1 | sed 's/^/\#/g'
+      redraw!
+      echo 'execed current file'
+    endif
   endif
   call winrestview(l:winview)
 endfunction

@@ -142,3 +142,6 @@ alias fm='/usr/bin/fetchmail'
 
 alias '..'='cd ..'
 alias '...'='cd ../..'
+
+alias gl='timelogger'
+alias gle='vi ~/.timelog.txt'

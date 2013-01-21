@@ -99,23 +99,6 @@ cd $ups
 }
 
 
-function gl() {
-gtimelog=~/.gtimelog/timelog.txt
-
-[ $# -eq 0 ]  && tail $gtimelog $2 && return
-
-case $1 in
-  t|c) tail $gtimelog $2
-    ;;
-  a) echo "$(date "+%Y-%m-%d %H:%M"): $(tail -1 $gtimelog | sed -e 's/^[0-9 :-]*//g')"  >> $gtimelog
-    ;;
-  e) vi $gtimelog
-    ;;
-  *) echo "$(date "+%Y-%m-%d %H:%M"): ${@/jj/**}" >> $gtimelog
-    ;;
-esac
-}
-
 function webshot(){
 curl 'http://wti.heroku.com/convert' -G --data-urlencode "site_url=$1" -o "$(echo $1 | sed -e 's/[^a-zA-Z]//g' | sed -e 's/^http//g').jpg"
 }

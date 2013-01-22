@@ -320,7 +320,7 @@ function! RunHandler()
       redraw!
       echo "triggered rspec for" expand("%")
     else
-      :silent!$r! ruby % 2>&1 | sed 's/^/\#/g'
+      :silent!$r! ruby % 2>&1 | sed 's/^/\# /g'
       redraw!
       echo 'execed current file'
     endif

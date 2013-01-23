@@ -309,18 +309,17 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
 " TODO: Make this use a tmp file and the backgrounding
 " process
 let s:SCRATCH_BUFFER_NAME="RunCommandRun"
-if !exists('s:buffer_number') " Supports reloading.
-  let s:buffer_number = -1
-endif
-
+let s:buffer_number = -1
 function! RunCommandShowBuffer()
   if(s:buffer_number == -1 || bufexists(s:buffer_number) == 0)
     exec "sp ". s:SCRATCH_BUFFER_NAME
     let s:buffer_number = bufnr('%')
   else
-    let buffer_win=bufwinnr(s:buffer_number)
+    let buffer_win=bufwinnr(s:SCRATCH_BUFFER_NAME)
     if(buffer_win == -1)
       exec 'sb '. s:buffer_number
+    else
+      exec buffer_win.'wincmd w'
     endif
   endif
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap

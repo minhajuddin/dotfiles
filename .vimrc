@@ -345,7 +345,7 @@ function! RunCommandOnCurrentBuffer(cmd)
   let original_bufnr = bufnr('%')
   let shellcommand = a:cmd . " " . bufname("%") . " 2>&1"
   call ShowOutputScratchBuffer()
-  call setline(1, '#OUTPUT for ' . shellcommand)
+  "call setline(1, '#OUTPUT for ' . shellcommand)
   execute "$read ! " . shellcommand
   " switch to original buffer
   let original_winnr = winbufnr(original_bufnr)

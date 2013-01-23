@@ -310,27 +310,37 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
 " process
 let s:SCRATCH_BUFFER_NAME="RunCommandRun"
 let s:buffer_number = -1
-function! RunCommandShowBuffer()
+" This function opens a scratch buffer if it doesn't
+" exist, and makes it visible if it exists and then
+" swiches to this scratch buffer
+function! ShowOutputScratchBuffer()
+  " if buffer is not present open it in a split view
+  " and store buffer number for further perusal
   if(s:buffer_number == -1 || bufexists(s:buffer_number) == 0)
     exec "sp ". s:SCRATCH_BUFFER_NAME
     let s:buffer_number = bufnr('%')
   else
+    " if the window of the scratch buffer is not visible
     let buffer_win=bufwinnr(s:SCRATCH_BUFFER_NAME)
     if(buffer_win == -1)
+      " open a split view with that buffer
       exec 'sb '. s:buffer_number
     else
+      " else switch to it if it is visible
       exec buffer_win.'wincmd w'
     endif
   endif
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  " clear the buffer for the new output
   execute 'normal  ggdG'
 endfunction
 function! RunCommandOnCurrentBuffer(cmd)
   let original_bufnr = bufnr('%')
   let shellcommand = a:cmd . " " . bufname("%") . " 2>&1"
-  call RunCommandShowBuffer()
+  call ShowOutputScratchBuffer()
   call setline(1, '#OUTPUT for ' . shellcommand)
   execute "$read ! " . shellcommand
+  " switch to original buffer
   let original_winnr = winbufnr(original_bufnr)
   exec original_winnr.'wincmd w'
   1

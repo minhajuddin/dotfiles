@@ -63,6 +63,7 @@ set fileencoding=utf8
 syntax on " syntax hilight on
 syntax sync fromstart
 set background=dark
+set splitbelow
 
 " plugin settings
 " Command T settings

@@ -178,6 +178,12 @@ nmap <leader>l :set list!<CR>
 "space to toggle folds
 nnoremap <Space> za
 vnoremap <Space> za
+
+" Window resizing mappings
+nnoremap <C-left> :vertical resize -3<cr>
+nnoremap <C-down> :resize +3<cr>
+nnoremap <C-up> :resize -3<cr>
+nnoremap <C-right> :vertical resize +3<cr>
 " NERDTree stuff
 map <leader>nt :execute 'NERDTreeToggle'<cr>
 map <leader>nc :execute 'NERDTreeClose'<cr>

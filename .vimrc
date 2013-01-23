@@ -306,23 +306,53 @@ nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
       \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
       \ . ">"<CR>
 
+" TODO: Make this use a tmp file and the backgrounding
+" process
+let s:SCRATCH_BUFFER_NAME="RunCommandRun"
+if !exists('s:buffer_number') " Supports reloading.
+  let s:buffer_number = -1
+endif
+
+function! RunCommandShowBuffer()
+  if(s:buffer_number == -1 || bufexists(s:buffer_number) == 0)
+    exec "sp ". s:SCRATCH_BUFFER_NAME
+    let s:buffer_number = bufnr('%')
+  else
+    let buffer_win=bufwinnr(s:buffer_number)
+    if(buffer_win == -1)
+      exec 'sb '. s:buffer_number
+    endif
+  endif
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  execute 'normal  ggdG'
+endfunction
+function! RunCommandOnCurrentBuffer(cmd)
+  let original_bufnr = bufnr('%')
+  let shellcommand = a:cmd . " " . bufname("%") . " 2>&1"
+  call RunCommandShowBuffer()
+  call setline(1, '#OUTPUT for ' . shellcommand)
+  execute "$read ! " . shellcommand
+  let original_winnr = winbufnr(original_bufnr)
+  exec original_winnr.'wincmd w'
+  1
+endfunction
+
 function! RunHandler()
   " to save the cursor position
   let l:winview = winsaveview()
   let currentfilename = expand('%:t')
   if &ft == "go"
-    :silent!$r!go run % 2>&1 | sed 's/^/\/\//g'
-    redraw!
-    echo "triggered go run " expand("%")
+    call RunCommandOnCurrentBuffer('go run')
+    echo "triggered go run " . currentfilename
   elseif &ft == "ruby"
     if match(currentfilename, 'spec') > 0
       :silent!!b bundle exec rspec %
       redraw!
       echo "triggered rspec for" expand("%")
     else
-      :silent!$r! ruby % 2>&1 | sed 's/^/\# /g'
+      call RunCommandOnCurrentBuffer('ruby')
       redraw!
-      echo 'execed current file'
+      echo 'execd current file'
     endif
   endif
   call winrestview(l:winview)

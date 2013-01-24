@@ -351,7 +351,7 @@ function! RunCommandOnCurrentBuffer(cmd)
   "call setline(1, '#OUTPUT for ' . shellcommand)
   execute "0read ! " . shellcommand
   " switch to original buffer
-  let original_winnr = winbufnr(original_bufnr)
+  let original_winnr =  bufwinnr(original_bufnr)
   exec original_winnr.'wincmd w'
   1
 endfunction

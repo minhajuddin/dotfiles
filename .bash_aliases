@@ -62,7 +62,6 @@ alias gm='git add . && git commit -m "minor tweaks"'
 alias tl='tail -f'
 
 alias ll='ls -hlF'
-alias sl='ls'
 
 #rails stuff
 alias devlog='tail -f log/development.log'
@@ -145,4 +144,4 @@ alias '...'='cd ../..'
 
 alias gl='timelogger'
 alias gle='vi ~/.timelog.txt'
-alias speclog='touch /tmp/{b,ci}.log; tail -n 100 -f /tmp/{b,ci}.log'
+alias sl='touch /tmp/{b,ci}.log; tail -n 100 -f /tmp/{b,ci}.log'

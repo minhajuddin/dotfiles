@@ -165,3 +165,9 @@ function ghalt(){
     fi
   fi
 }
+
+
+gla()
+{
+  echo "$(date "+%Y-%m-%d %H:%M"): $(tail -1 ~/.timelog.txt | sed -e 's/^[0-9 :-]*//g')" >> ~/.timelog.txt
+}

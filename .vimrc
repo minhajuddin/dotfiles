@@ -326,6 +326,8 @@ function! ShowOutputScratchBuffer()
   if(s:buffer_number == -1 || bufexists(s:buffer_number) == 0)
     exec "sp ". s:SCRATCH_BUFFER_NAME
     let s:buffer_number = bufnr('%')
+    " set window height
+    resize 5
   else
     " if the window of the scratch buffer is not visible
     let buffer_win=bufwinnr(s:SCRATCH_BUFFER_NAME)
@@ -339,6 +341,7 @@ function! ShowOutputScratchBuffer()
   endif
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
   " clear the buffer for the new output
+  " comment out this line if you don't want this behavior
   execute 'normal  ggdG'
 endfunction
 function! RunCommandOnCurrentBuffer(cmd)
@@ -346,7 +349,7 @@ function! RunCommandOnCurrentBuffer(cmd)
   let shellcommand = a:cmd . " " . bufname("%") . " 2>&1"
   call ShowOutputScratchBuffer()
   "call setline(1, '#OUTPUT for ' . shellcommand)
-  execute "$read ! " . shellcommand
+  execute "0read ! " . shellcommand
   " switch to original buffer
   let original_winnr = winbufnr(original_bufnr)
   exec original_winnr.'wincmd w'

@@ -229,6 +229,8 @@ noremap <silent> <leader>cw :close<CR>
 noremap <silent> <leader>bd :bd<CR>
 map <leader>a :execute 'Ack'<cr>
 
+" Open in new buffer and close buffer
+map <C-m> :tabedit %<cr>
 " ==================================================
 " TEXT TRANSFORMATION
 " NOTE: should these be functions?

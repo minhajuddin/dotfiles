@@ -82,23 +82,7 @@ if [[ ! -z "$PS1" ]] ; then
   if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
   else
-    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    #GIT_PS1_SHOWDIRTYSTATE=1
-    #PS1='$(expr substr $(basename $(pwd)) 1 3)$(__git_ps1 ":%.3s")$ '
-    #PS1='\e[0;31m$ '
-    function __awesome_dir_ps(){
-      basedir="$(basename "$(pwd)")"
-      length=$(expr length "$basedir")
-      if [ $length -gt 7 ]
-      then
-        prefix="$(expr substr "$basedir" 1 3).$(expr substr "$basedir" $(( $length - 2 )) 3)"
-      else
-        prefix="$basedir"
-      fi
-      echo "$prefix \$ "
-      #echo "$(expr substr $basedir 1 4) $"
-    }
-    PS1='$(hostname):$(__awesome_dir_ps)'
+    PS1="\[\033[1;36m\]\h\[\033[00m\] \[\033[1;33m\]\W\[\033[00m\] \[\033[0;31m\]\$\[\033[00m\] "
   fi
   unset color_prompt force_color_prompt
 

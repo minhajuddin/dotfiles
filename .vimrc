@@ -94,9 +94,6 @@ let g:xptemplate_vars="author=Khaja Minhajuddin&email=minhajuddin.k@gmail.com"
 let g:xptemplate_brace_complete = ''
 let g:xptemplate_key = '<Tab>'
 let g:xptemplate_key_pum_only = '<S-Tab>'
-"supertab config
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
 
 " from another vimrc
 " Make sure that unsaved buffers that are to be put in the background are

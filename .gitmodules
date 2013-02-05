@@ -34,9 +34,6 @@
 [submodule ".vim/bundle/ultisnips"]
 	path = .vim/bundle/ultisnips
 	url = git://github.com/SirVer/ultisnips.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
@@ -88,3 +85,6 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule ".vim/bundle/ycm"]
+	path = .vim/bundle/ycm
+	url = git://github.com/Valloric/YouCompleteMe.git

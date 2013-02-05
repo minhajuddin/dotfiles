@@ -1,3 +1,4 @@
+alias vi='vim'
 alias o='gnome-open'
 alias pi='dpkg --get-selections'
 alias pi?='dpkg --get-selections| igrep'

@@ -82,7 +82,7 @@ if [[ ! -z "$PS1" ]] ; then
   if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
   else
-    PS1="\[\033[1;36m\]\h\[\033[00m\] \[\033[1;33m\]\W\[\033[00m\] \[\033[0;31m\]\$\[\033[00m\] "
+    PS1="\[\033[1;31m\]\h\[\033[00m\] \[\033[1;33m\]\W\[\033[00m\] \[\033[0;36m\]\$\[\033[00m\] "
   fi
   unset color_prompt force_color_prompt
 
@@ -149,3 +149,5 @@ PATH=$PATH:$HOME/go/bin:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripti
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+## Say something wise
+#fortune

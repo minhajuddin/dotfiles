@@ -151,10 +151,10 @@ set showfulltag
 " Syntastic settings
 let g:syntastic_ruby_exec="ruby-1.9.2-p290"
 "let g:syntastic_check_on_open=1
-let g:syntastic_error_symbol='✱✱'
-let g:syntastic_style_error_symbol='✱✱'
-let g:syntastic_warning_symbol='❯❯'
-let g:syntastic_style_warning_symbol='❯❯'
+let g:syntastic_error_symbol='✱'
+let g:syntastic_style_error_symbol='✱'
+let g:syntastic_warning_symbol='❯'
+let g:syntastic_style_warning_symbol='❯'
 "let g:syntastic_auto_loc_list=1
 " Settings specific to gvim
 if has("gui_running")

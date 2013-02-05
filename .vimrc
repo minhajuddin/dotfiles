@@ -95,6 +95,9 @@ let g:xptemplate_brace_complete = ''
 let g:xptemplate_key = '<Tab>'
 let g:xptemplate_key_pum_only = '<S-Tab>'
 
+" YCM
+let g:ycm_key_select_completion='<cr>'
+
 " from another vimrc
 " Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the "must save first" error doesn't come up)

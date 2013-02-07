@@ -346,9 +346,10 @@ function! ShowOutputScratchBuffer()
   " comment out this line if you don't want this behavior
   execute 'normal  ggdG'
 endfunction
-function! RunCommandOnCurrentBuffer(cmd)
+
+function! RunRawCommandOnCurrentBuffer(cmd)
   let original_bufnr = bufnr('%')
-  let shellcommand = a:cmd . " " . bufname("%") . " 2>&1"
+  let shellcommand = a:cmd . " 2>&1"
   call ShowOutputScratchBuffer()
   "call setline(1, '#OUTPUT for ' . shellcommand)
   execute "0read ! " . shellcommand
@@ -356,6 +357,10 @@ function! RunCommandOnCurrentBuffer(cmd)
   let original_winnr =  bufwinnr(original_bufnr)
   exec original_winnr.'wincmd w'
   1
+endfunction
+
+function! RunCommandOnCurrentBuffer(cmd)
+  call RunRawCommandOnCurrentBuffer(a:cmd . " " . bufname("%"))
 endfunction
 
 function! RunHandler()
@@ -375,6 +380,11 @@ function! RunHandler()
       redraw!
       echo 'execd current file'
     endif
+  elseif &ft == "rust"
+    let rust_bn = bufname("%")
+    let binary_path = expand("%:p:r")
+    call RunRawCommandOnCurrentBuffer('rustc '. rust_bn . '&& ' . binary_path)
+    echo "triggered rust run" . currentfilename
   endif
   call winrestview(l:winview)
 endfunction

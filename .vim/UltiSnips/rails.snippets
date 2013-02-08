@@ -1,3 +1,7 @@
+snippet pn
+pending "${1:scenario}"
+endsnippet
+
 snippet it
 it "${1:scenario}" do
   $0
@@ -11,7 +15,7 @@ end
 endsnippet
 
 snippet before
-before do
+before(:each) do
   $0
 end
 endsnippet

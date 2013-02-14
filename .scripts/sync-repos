@@ -20,6 +20,13 @@ puts 'syncing repositories'
     next
   end
 
+  unpushed_commits = `cd #{path} && git log --branches --not --remotes --oneline`.lines
+
+  if unpushed_commits.count == 0
+    puts "#{path} is already synced"
+    next
+  end
+
   remotes.each do |remote|
     cmd = "cd #{path} && git push #{remote}"
     puts "executing: '#{cmd}'"

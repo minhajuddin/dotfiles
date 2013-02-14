@@ -152,18 +152,8 @@ function ghalt(){
   then
     sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown
   fi
-
-  if [ $( t -s :eod | wc -l ) -gt 2 ]
-  then
-    echo "You have EOD tasks which have not been finished, please finish them!"
-    t -s :eod
-  else
-    exit_if_not_in_sync
-    if [ $ret = 0 ]
-    then
-      sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown
-    fi
-  fi
+  /home/minhajuddin/.scripts/sync-repos
+  sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown
 }
 
 

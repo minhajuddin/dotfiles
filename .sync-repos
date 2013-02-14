@@ -1,11 +1,13 @@
 ---
-- :path: ~/repos/core/omar/search
+- :path: /home/minhajuddin/r/elf
   :remotes:
   - origin
-- :path: ~/repos/core/omar/designer
+- :path: /home/minhajuddin/gocode/src/github.com/minhajuddin/timelogger
   :remotes:
   - origin
-- :path: ~/repos/logbin
+- :path: /home/minhajuddin/gocode/src/github.com/minhajuddin/httptoemail
   :remotes:
   - origin
-  - local
+- :path: /home/minhajuddin/repos/dotfiles
+  :remotes:
+  - origin

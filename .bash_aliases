@@ -145,5 +145,5 @@ alias '...'='cd ../..'
 
 alias gl='timelogger'
 alias gle='vi ~/.timelog.txt'
-alias sl='touch /tmp/{b,ci}.log; tail -n 100 -f /tmp/{b,ci}.log'
+alias sl='touch /tmp/{b,ci}.log; tail -n 100 -f /tmp/{b,ci}.log log/test.log'
 alias br='b rspec spec/'

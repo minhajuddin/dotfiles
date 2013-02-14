@@ -369,9 +369,10 @@ function! RunHandler()
     echo "triggered go run " . currentfilename
   elseif &ft == "ruby"
     if match(currentfilename, 'spec') > 0
-      :silent!!b bundle exec rspec %
+      let rspec_cmd = '!b bundle exec rspec ' . expand('%:p') . ':' . line('.')
+      silent execute rspec_cmd
       redraw!
-      echo "triggered rspec for" expand("%")
+      echo "triggered ". rspec_cmd
     else
       call RunCommandOnCurrentBuffer('ruby')
       redraw!

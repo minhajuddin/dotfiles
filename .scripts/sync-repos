@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+#cron entry
+# */5 * * * * /bin/bash -l -c 'export SSH_AUTH_SOCK="/tmp/$(ls /tmp | grep keyring)/ssh";/home/minhajuddin/.scripts/sync-repos' >> /tmp/generic.log 2>&1
 require 'rubygems'
 require 'yaml'
 

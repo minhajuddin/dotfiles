@@ -11,3 +11,6 @@
 - :path: /home/minhajuddin/repos/dotfiles
   :remotes:
   - origin
+- :path: /home/minhajuddin/repos/school_one
+  :remotes:
+  - origin

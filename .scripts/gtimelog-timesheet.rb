@@ -2,15 +2,10 @@
 require 'time'
 
 task = ARGV.first
-exit -1 unless task
+exit(-1) unless task
 
-#at every @reboot trigger a cron task to do the following
-#read the last 1000 lines
-#extract information from it
-#group by date and first word
-
-days = File.readlines('/tmp/foo')
-.map{|x| /(?<date>\d{4}-\d{2}-\d{2}) (?<hours>\d{2}:\d{2}): (?<task>.*$)/.match(x.chomp)}
+days = File.readlines('/home/minhajuddin/.gtimelog/timelog.txt')[-140..-1]
+days.map{|x| /(?<date>\d{4}-\d{2}-\d{2}) (?<hours>\d{2}:\d{2}): (?<task>.*$)/.match(x.chomp)}
 .compact
 .group_by{|x| x[:date]}
 .each do |day, logs|
@@ -25,16 +20,3 @@ days = File.readlines('/tmp/foo')
   end
   puts "--------------\nTotal: #{total_hours}"
 end
-
-#puts days.first
-
-#prev = ''
-#hours = 0
-#lines.each do |line|
-#if line.empty?
-#end of day print line info
-#else
-#log =
-#end
-#prev = line
-#end

@@ -8,18 +8,15 @@ __STOP_FILE=/tmp/.stop-wallpaper
 
 case $1 in
   stop) touch $__STOP_FILE
-    echo 'exiting after creating stop file'
     exit
     ;;
   start) rm $__STOP_FILE
-    echo 'exiting after removing stop file'
     exit
     ;;
 esac
 
 if [ -e  $__STOP_FILE ] 
 then
-  echo 'exiting: found stop file'
   exit 
 fi
 

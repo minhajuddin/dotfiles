@@ -4,6 +4,25 @@
 # Changes your current wallpaper
 # Needs xloadimage
 
+__STOP_FILE=/tmp/.stop-wallpaper
+
+case $1 in
+  stop) touch $__STOP_FILE
+    echo 'exiting after creating stop file'
+    exit
+    ;;
+  start) rm $__STOP_FILE
+    echo 'exiting after removing stop file'
+    exit
+    ;;
+esac
+
+if [ -e  $__STOP_FILE ] 
+then
+  echo 'exiting: found stop file'
+  exit 
+fi
+
 # Extra:
 # crontab entry to change your wallaper every minute
 # * * * * * DISPLAY=:1 /home/minhajuddin/.scripts/change-wallpaper.sh
@@ -18,7 +37,7 @@ __WALLPAPERS_INDEX_FILE=/tmp/.wallpaper
 # in this case, create a file with a index starting at 0
 # if you want the index to persist change the path above to
 # a persistent path like ~/.wallpaper
-if [ -x  $__WALLPAPERS_INDEX_FILE ] 
+if [ ! -e  $__WALLPAPERS_INDEX_FILE ] 
 then
   echo '0' > $__WALLPAPERS_INDEX_FILE
 fi

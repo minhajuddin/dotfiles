@@ -22,3 +22,4 @@ ln -s /home/minhajuddin/.xmonad/focus.desktop /usr/share/xsessions/focus.desktop
 ~~~~
 
 ![Xmonad Screenshot](http://i.imgur.com/8ibsI.png)
+

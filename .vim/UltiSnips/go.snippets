@@ -11,10 +11,7 @@ func main(){
 endsnippet
 
 snippet ife
-if ${1:err} != nil {
-  log.Fatal("$2", $1)
-}
-$0
+if ${1:err} != nil { log.Println("$2", $1)$0 }
 endsnippet
 
 snippet fori

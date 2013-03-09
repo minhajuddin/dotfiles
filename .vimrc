@@ -1,5 +1,9 @@
 "necessary for lots of cool vim things
 set nocompatible
+
+" Pathogen
+call pathogen#infect()
+call pathogen#helptags()
 " ==================================================
 " CURRENT MAPPINGS
 " ==================================================
@@ -107,6 +111,7 @@ set cmdheight=2
 set showmode
 
 " Hide the mouse pointer while typing
+set mouse=a
 set mousehide
 
 " Set up the gui cursor to look nice

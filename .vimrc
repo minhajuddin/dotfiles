@@ -184,6 +184,11 @@ nmap <leader>l :set list!<CR>
 nnoremap <Space> za
 vnoremap <Space> za
 
+" Tab navigation
+nnoremap <M-j> :tabp<cr>
+nnoremap <M-k> :tabn<cr>
+
+
 " Window resizing mappings
 nnoremap <C-left> :vertical resize -3<cr>
 nnoremap <C-down> :resize +3<cr>

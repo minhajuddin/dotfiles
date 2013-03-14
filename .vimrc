@@ -291,6 +291,8 @@ autocmd BufNewFile,BufRead *.io  setf io
 autocmd BufNewFile,BufRead *.notes setf notes
 autocmd BufNewFile,BufRead *.mg setf mg
 autocmd BufNewFile,BufRead *.spark setf html
+" markdown
+autocmd Filetype markdown set textwidth=80
 
 " ==================================================
 " CUSTOM VIM FUNCTIONS AND THEIR MAPPINGS
@@ -391,6 +393,11 @@ function! RunHandler()
       redraw!
       echo 'execd current file'
     endif
+  elseif &ft == "c"
+    let c_bn = bufname("%")
+    let c_binary_path = expand("%:p:r")
+    call RunRawCommandOnCurrentBuffer('cc '. rust_bn . '&& ' . binary_path)
+    echo "triggered cc run" . currentfilename
   elseif &ft == "rust"
     let rust_bn = bufname("%")
     let binary_path = expand("%:p:r")

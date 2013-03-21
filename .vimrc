@@ -247,6 +247,8 @@ map <leader>a :execute 'Ack'<cr>
 " ==================================================
 " html2haml
 :vmap <leader>h :!/home/minhajuddin/.rvm/bin/r_html2haml -e<cr>
+:vmap <leader>r :!/home/minhajuddin/.scripts/haml-hash-to-html.rb<cr>
+
 " computes the sum of numbers
 :vmap <leader>s :!/home/minhajuddin/.scripts/msum<cr>
 

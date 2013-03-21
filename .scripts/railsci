@@ -2,7 +2,7 @@
 #Author: Khaja Minhajuddin
 #Date: 2012 Dec 24
 #Script to run a ci build on the local computer after a commit is made
-
+exit
 
 require 'securerandom'
 require 'fileutils'

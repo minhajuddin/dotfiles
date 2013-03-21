@@ -17,4 +17,10 @@
 - :path: /home/minhajuddin/repos/gcj
   :remotes:
   - origin
+- :path: /home/minhajuddin/repos/angular-asana
+  :remotes:
+  - origin
+- :path: /home/minhajuddin/repos/activayt
+  :remotes:
+  - origin
   

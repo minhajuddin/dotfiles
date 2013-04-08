@@ -1,3 +1,4 @@
+alias pos='touch ~/.pomodoro_session'
 alias vi='vim'
 alias o='gnome-open'
 alias pi='dpkg --get-selections'

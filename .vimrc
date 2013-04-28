@@ -2,6 +2,7 @@
 set nocompatible
 
 " Pathogen
+call pathogen#infect()
 call pathogen#helptags()
 " ==================================================
 " CURRENT MAPPINGS
@@ -84,10 +85,6 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 colorscheme vividchalk
-
-"supertab config
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
 
 "NERDTree
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node

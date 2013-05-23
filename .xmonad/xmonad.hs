@@ -167,7 +167,7 @@ myManageHook = composeAll
     ]
 
 main = do
-    xmproc <- spawnPipe "/home/minhajuddin/.cabal/bin/xmobar -x 1"
+    xmproc <- spawnPipe "/usr/bin/xmobar -x 1"
     xmonad $ myBaseConfig
         { manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
                         <+> manageHook myBaseConfig

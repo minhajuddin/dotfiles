@@ -49,4 +49,5 @@ fi
 
 #start xmonad
 #exec /home/minhajuddin/.cabal/bin/xmonad
-exec /home/minhajuddin/.cabal/bin/xmonad
+#exec /home/minhajuddin/.cabal/bin/xmonad
+exec /usr/bin/xmonad

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# set up an icon tray
+#trayer --edge top --align left --SetDockType true --SetPartialStrut true \
+  #--expand true --width 7 --transparent true --tint 0x009900 --height 21 &
+trayer --edge top --align right --width 14 --height 21 --SetDockType true --SetPartialStrut false --expand true --transparent true --tint 0x69D2E7 --monitor 1 &
+
+#/usr/bin/synergys --config /etc/synergy.conf &
+
+/usr/bin/gnome-do &
+
+sleep 15
+
+/usr/bin/gnome-sound-applet &
+
+# set the background color
+__WALLPAPERS_DIR=~/Dropbox/wallpapers/active
+xloadimage -onroot "$__WALLPAPERS_DIR/$(ls $__WALLPAPERS_DIR| sed -n "$(( $( expr $(date +%j) + 0 ) % $(ls $__WALLPAPERS_DIR| wc -l ) + 1 )) p" )"
+
+
+if test -e /tmp/stop
+then
+  exit 0
+fi
+
+#/usr/bin/firefox &
+/usr/bin/gtimelog &
+#sleep 15
+#/usr/bin/skype &
+#sleep 15
+#/usr/bin/pidgin &

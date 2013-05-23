@@ -86,8 +86,8 @@ filetype plugin indent on
 colorscheme vividchalk
 
 "supertab config
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
+"let g:SuperTabMappingForward = '<c-space>'
+"let g:SuperTabMappingBackward = '<s-c-space>'
 
 "NERDTree
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node

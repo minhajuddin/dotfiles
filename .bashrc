@@ -27,7 +27,7 @@ if [[ ! -z "$PS1" ]] ; then
   HISTSIZE=10000
   HISTFILESIZE=10000
   HISTTIMEFORMAT="%F %T "
-  HISTIGNORE=history:awesome-ignored
+  HISTIGNORE=" *:rm -f*:rm -r*:*--force*" # history:awesome-ignored
 
   # check the window size after each command and, if necessary,
   # update the values of LINES and COLUMNS.

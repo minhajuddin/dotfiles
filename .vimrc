@@ -84,6 +84,7 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 colorscheme vividchalk
+let g:ycm_filetype_specific_completion_to_disable = {'ruby' : 1}
 
 "supertab config
 "let g:SuperTabMappingForward = '<c-space>'
@@ -164,7 +165,7 @@ let g:syntastic_style_warning_symbol='❯'
 " Settings specific to gvim
 if has("gui_running")
   " maximizes the gvim window
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 11
   set lines=999 columns=999
   " No menus and no toolbar
   set guioptions-=m

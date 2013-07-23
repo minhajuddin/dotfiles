@@ -90,6 +90,9 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'ruby' : 1,
       \}
+"supertab config
+"let g:SuperTabMappingForward = '<c-space>'
+"let g:SuperTabMappingBackward = '<s-c-space>'
 
 "NERDTree
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
@@ -166,7 +169,7 @@ let g:syntastic_style_warning_symbol='❯'
 " Settings specific to gvim
 if has("gui_running")
   " maximizes the gvim window
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 11
   set lines=999 columns=999
   " No menus and no toolbar
   set guioptions-=m

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+<<<<<<< HEAD
+puts eval(ARGF.readlines.map{|x| x.chomp.strip.gsub(',', '')}.reject{|x| x.empty?}.join('+'))
+=======
+puts eval(ARGF.readlines.map{|x| x.chomp.strip.gsub(/[^0-9\/*+-]+/, '')}.reject{|x| x.empty?}.join('+'))
+>>>>>>> origin/master

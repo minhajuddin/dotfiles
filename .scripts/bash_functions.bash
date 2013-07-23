@@ -1,4 +1,7 @@
 #copy files to a remote computer's temp directory
+o(){
+  gnome-open "$@" &>/tmp/generic.log
+}
 cpr(){
   scp $2 $1:/tmp
 }
@@ -108,13 +111,13 @@ gvim --remote-silent $(type -P $1)
 }
 
 function vio(){
-vi $(type -P $1)
+vim $(type -P $1)
 }
 
 function pyg(){
 tmp_file="/tmp/$(basename $1).html"
 cp $1 $tmp_file
-vi $tmp_file
+vim $tmp_file
 pygmentize -f html -l $2 $tmp_file
 }
 

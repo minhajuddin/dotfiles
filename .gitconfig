@@ -26,7 +26,7 @@
 [difftool]
   prompt = 0
 [merge]
-  tool = kdiff3
+  tool = meld
 [mergetool]
   prompt = 0
 [alias]
@@ -40,6 +40,7 @@
   p = push
   b = branch
   l = log
+  lcl = log --graph --pretty=format:'%h -%d %s %cr <%an>' --abbrev-commit --date=relative #git log color less
   i = init
   co = checkout
   m = merge

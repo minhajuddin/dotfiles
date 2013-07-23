@@ -5,3 +5,4 @@ Comment=Lightweight tiling window manager
 Exec=/home/minhajuddin/.xmonad/focus.start
 Icon=xmonad.png
 Type=XSession
+#Type=Application

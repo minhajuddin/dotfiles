@@ -3,7 +3,7 @@
 # set up an icon tray
 #trayer --edge top --align left --SetDockType true --SetPartialStrut true \
   #--expand true --width 7 --transparent true --tint 0x009900 --height 21 &
-trayer --edge top --align right --width 14 --height 21 --SetDockType true --SetPartialStrut false --expand true --transparent true --tint 0x808080 --monitor 1 &
+trayer --edge top --align right --width 14 --height 21 --SetDockType true --SetPartialStrut false --expand true --transparent true --tint 0x69D2E7 --monitor 1 &
 
 #/usr/bin/synergys --config /etc/synergy.conf &
 

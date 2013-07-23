@@ -43,9 +43,9 @@
   i = init
   co = checkout
   m = merge
-  d = diff --color-words -w
+  d = diff -w HEAD
+  dw = !git d --word-diff=color
   dt = difftool
-  dh = !git d HEAD
   amend = commit --amend -C HEAD
   ll = !git la -20
   lll = !git la -50
@@ -66,3 +66,5 @@
 [core]
 	pager = less -r
   excludesfile = ~/.gitignore
+[push]
+	default = simple

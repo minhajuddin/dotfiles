@@ -2,7 +2,6 @@
 set nocompatible
 
 " Pathogen
-call pathogen#infect()
 call pathogen#helptags()
 " ==================================================
 " CURRENT MAPPINGS
@@ -85,6 +84,12 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 colorscheme vividchalk
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'ruby' : 1,
+      \}
 
 "NERDTree
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node

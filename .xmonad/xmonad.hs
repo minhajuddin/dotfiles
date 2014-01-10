@@ -47,9 +47,9 @@ myFocusedBorderColor = "#D14836"
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- launching and killing programs
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
-    , ((mod4Mask .|. shiftMask, xK_z), spawn "gnome-screensaver-command --lock")
+    , ((mod1Mask .|. controlMask, xK_l), spawn "gnome-screensaver-command --lock")
 
-    , ((modMask,               xK_p     ), spawn "/usr/bin/gnome-do") -- %! Launch dmenu
+    , ((mod1Mask, xK_space               ), spawn "/usr/bin/gnome-do") -- %! Launch dmenu
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun") -- %! Launch gmrun
     , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
@@ -101,8 +101,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --, ((modMask, Space     ), spawn "gnome-do") -- %! gnome-do
 
     -- volume control
-    , ((modMask, xK_m     ), spawn "amixer set Master 3%+") -- %! increase volume
-    , ((modMask, xK_n     ), spawn "amixer set Master 3%-") -- %! decrease volume
+    , ((modMask, xK_m     ), spawn "amixer -c 1 -- sset Master playback 3%+") -- %! increase volume
+    , ((modMask, xK_n     ), spawn "amixer -c 1 -- sset Master playback 3%-") -- %! decrease volume
 
     -- layout screens
 

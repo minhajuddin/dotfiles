@@ -1,3 +1,5 @@
+alias f='b git fetch'
+alias x='b git push'
 alias pos='touch ~/.pomodoro_session'
 alias pi='dpkg --get-selections'
 alias pi?='dpkg --get-selections| igrep'

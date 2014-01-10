@@ -84,12 +84,6 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 colorscheme vividchalk
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'ruby' : 1,
-      \}
 "supertab config
 "let g:SuperTabMappingForward = '<c-space>'
 "let g:SuperTabMappingBackward = '<s-c-space>'
@@ -438,6 +432,13 @@ function! ImportPackageUnderCursor()
   exec 'Import '.word
 endfunction
 nnoremap <c-i> :call ImportPackageUnderCursor()<cr>
+
+" Open scratch file from dropbox
+function! OpenScratch()
+  exec 'sp '. '/home/minhajuddin/Dropbox/scratch/' . split(getcwd(), '/')[-1]
+  "ruby VIM::command({VIM::evaluate('getcwd()').downcase.gsub(/\//,'')}"))
+endfunction
+nnoremap <leader>x :call OpenScratch()<cr>
 
 
 

@@ -96,10 +96,13 @@ set synmaxcol=200
 let loaded_matchparen = 1
 set matchtime=0 " to stop automatic moving of cursor to matched paren
 " XPTemplate config stuff
-let g:xptemplate_vars="author=Khaja Minhajuddin&email=minhajuddin.k@gmail.com"
-let g:xptemplate_brace_complete = ''
-let g:xptemplate_key = '<Tab>'
-let g:xptemplate_key_pum_only = '<S-Tab>'
+"let g:xptemplate_vars="author=Khaja Minhajuddin&email=minhajuddin.k@gmail.com"
+"let g:xptemplate_brace_complete = ''
+"let g:xptemplate_key = '<Tab>'
+"let g:xptemplate_key_pum_only = '<S-Tab>'
+
+
+let g:UltiSnipsExpandTrigger='<C-o>'
 
 " from another vimrc
 " Make sure that unsaved buffers that are to be put in the background are

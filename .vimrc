@@ -84,7 +84,7 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 colorscheme vividchalk
-let g:ycm_filetype_specific_completion_to_disable = {'ruby' : 1}
+" let g:ycm_filetype_specific_completion_to_disable = {'ruby' : 1}
 
 "supertab config
 "let g:SuperTabMappingForward = '<c-space>'
@@ -257,6 +257,9 @@ map <leader>a :execute 'Ack'<cr>
 " ==================================================
 " AUTOMATIC COMMANDS
 " ==================================================
+
+" hamlbars
+autocmd BufRead,BufNewFile *.hamlbars setlocal filetype=haml.mustache
 " ruby TODO: find out more about these settings
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1

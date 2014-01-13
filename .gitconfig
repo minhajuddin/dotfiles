@@ -30,6 +30,7 @@
 [mergetool]
   prompt = 0
 [alias]
+  meld = difftool --dir-diff --tool=meld
   c = commit -m
   ca = commit -a -m
   cl = clean -f
@@ -68,4 +69,4 @@
 	pager = less -r
   excludesfile = ~/.gitignore
 [push]
-	default = simple
+	default = current

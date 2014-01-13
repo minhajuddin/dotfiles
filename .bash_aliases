@@ -1,3 +1,5 @@
+alias z='zeus'
+alias f='b git fetch'
 alias pos='touch ~/.pomodoro_session'
 alias vi='vim'
 alias pi='dpkg --get-selections'
@@ -7,6 +9,7 @@ alias gr='cd $(git rev-parse --show-cdup)'
 alias ssh-insecure='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no '
 alias glo='gnome-session-save --logout'
 alias igrep='grep -i'
+alias x='b git push'
 
 alias up='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
 alias ps?='ps aux|grep -v grep | grep -i'
@@ -70,15 +73,15 @@ alias testlog='tail -f log/test.log'
 
 #bundler stuff
 alias bx='bundle exec'
-alias bi='bundle install --binstubs'
+alias bi='bundle install'
 alias bu='bundle update'
 
 alias r='rails'
-alias rc='rails console'
-alias rg='rails generate'
+alias rc='bin/rails console'
+alias rg='bin/rails generate'
 alias rs='bin/unicorn -p 3000 || bin/rails server thin || rails server thin || rails server'
-alias rsa='rails server -p 3030'
-alias rsb='rails server -p 3040'
+alias rsa='bin/rails server -p 3030'
+alias rsb='bin/rails server -p 3040'
 
 #utilities#
 alias timestamp='date +%Y%m%d%H%M%S'

@@ -151,6 +151,13 @@ function exit_if_not_in_sync(){
 }
 
 function ghalt(){
+  echo "===================="
+  echo "===================="
+  echo "===================="
+  echo "FINISH: PRINTING HOURS SINCE LAST LOG!!!!!!!! AND ACTUALLY DON'T SHUTDOWN TILL THE LOG FOR LAST 5 MINS IS DONE"
+  echo "===================="
+  echo "===================="
+  echo "===================="
   if [ "$1" = 'force' ]
   then
     sudo /usr/lib/indicator-session/gtk-logout-helper --shutdown

@@ -22,5 +22,7 @@ invoice = template.result(binding)
 op_file = "#{file_prefix}-#{invoice_id}.#{Time.now.strftime "%Y%m%d%H%M%S"}.html"
 temp_file = "/tmp/#{ op_file }"
 File.open(temp_file, 'w') { |f| f.puts( invoice ) }
-`wkhtmltopdf-amd64 #{temp_file} pdfs/#{op_file}.pdf`
+pdf_path = "pdfs/#{op_file}.pdf"
+`wkhtmltopdf-amd64 #{temp_file} #{pdf_path}`
+`gnome-open #{pdf_path}`
 puts 'done'

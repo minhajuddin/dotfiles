@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/home/minhajuddin/.rvm/rubies/ruby-1.9.3-p194/bin/ruby
 require 'time'
 
 slot_op = `~/.scripts/slots`.chomp

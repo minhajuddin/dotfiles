@@ -12,7 +12,7 @@ Config {
                     , Run StdinReader
                     , Run CommandReader "~/.pymodoro/pymodoro.py -i 5 80 10" "pomodoro"
                     , Run Date "%a %b %_d %H:%M" "date" 10
-                    , Run Com "/bin/bash -l -c /home/minhajuddin/.scripts/xmobar_info" [] "info" 60
+                    , Run Com "/home/minhajuddin/.scripts/xmobar_info" [] "info" 60
                     ]
        , sepChar = "%"
        , alignSep = "}{"

@@ -389,6 +389,9 @@ function! RunHandler()
   if &ft == "go"
     call RunCommandOnCurrentBuffer('go run')
     echo "triggered go run " . currentfilename
+  elseif &ft == "javascript"
+    call RunCommandOnCurrentBuffer('node')
+    echo "triggered node " . currentfilename
   elseif &ft == "ruby"
     if match(currentfilename, 'spec') > 0
       let rspec_cmd = '!b bundle exec rspec ' . expand('%:p') . ':' . line('.')

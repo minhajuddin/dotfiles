@@ -8,7 +8,7 @@
 old=$1
 new=$2
 
-for file in $(git grep $old | cut -d':'  -f 1 | uniq)
+for file in $(git grep -l $old)
 do
   echo "replacing '$old' with '$new' in '$file'"
   sed -i -e "s/$old/$new/g" $file
